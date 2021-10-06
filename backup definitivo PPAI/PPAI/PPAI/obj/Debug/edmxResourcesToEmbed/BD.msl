@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PPAIModelStoreContainer" CdmEntityContainer="PPAI2Entities">
+    <EntitySetMapping Name="AsignacionVisita">
+      <EntityTypeMapping TypeName="PPAIModel.AsignacionVisita">
+        <MappingFragment StoreEntitySet="AsignacionVisita">
+          <ScalarProperty Name="fechaHoraFin" ColumnName="fechaHoraFin" />
+          <ScalarProperty Name="guiaAsignado" ColumnName="guiaAsignado" />
+          <ScalarProperty Name="fechaHoraInicio" ColumnName="fechaHoraInicio" />
+          <ScalarProperty Name="idReserva" ColumnName="idReserva" />
+          <ScalarProperty Name="idSede" ColumnName="idSede" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CambioEstado">
+      <EntityTypeMapping TypeName="PPAIModel.CambioEstado">
+        <MappingFragment StoreEntitySet="CambioEstado">
+          <ScalarProperty Name="fechaHoraFin" ColumnName="fechaHoraFin" />
+          <ScalarProperty Name="fechaHoraInicio" ColumnName="fechaHoraInicio" />
+          <ScalarProperty Name="ordId" ColumnName="ordId" />
+          <ScalarProperty Name="idEstado" ColumnName="idEstado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cargo">
+      <EntityTypeMapping TypeName="PPAIModel.Cargo">
+        <MappingFragment StoreEntitySet="Cargo">
+          <ScalarProperty Name="idCargo" ColumnName="idCargo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleExposicion">
+      <EntityTypeMapping TypeName="PPAIModel.DetalleExposicion">
+        <MappingFragment StoreEntitySet="DetalleExposicion">
+          <ScalarProperty Name="lugarAsignado" ColumnName="lugarAsignado" />
+          <ScalarProperty Name="idObra" ColumnName="idObra" />
+          <ScalarProperty Name="idExposicion" ColumnName="idExposicion" />
+          <ScalarProperty Name="idSede" ColumnName="idSede" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empleado">
+      <EntityTypeMapping TypeName="PPAIModel.Empleado">
+        <MappingFragment StoreEntitySet="Empleado">
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="codigoValuacion" ColumnName="codigoValuacion" />
+          <ScalarProperty Name="cuit" ColumnName="cuit" />
+          <ScalarProperty Name="dni" ColumnName="dni" />
+          <ScalarProperty Name="calle" ColumnName="calle" />
+          <ScalarProperty Name="numeroCalle" ColumnName="numeroCalle" />
+          <ScalarProperty Name="fechaIngreso" ColumnName="fechaIngreso" />
+          <ScalarProperty Name="fechaNacimiento" ColumnName="fechaNacimiento" />
+          <ScalarProperty Name="mail" ColumnName="mail" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idSexo" ColumnName="idSexo" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="cargo" ColumnName="cargo" />
+          <ScalarProperty Name="idSede" ColumnName="idSede" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Escuela">
+      <EntityTypeMapping TypeName="PPAIModel.Escuela">
+        <MappingFragment StoreEntitySet="Escuela">
+          <ScalarProperty Name="calle" ColumnName="calle" />
+          <ScalarProperty Name="numeroCalle" ColumnName="numeroCalle" />
+          <ScalarProperty Name="mail" ColumnName="mail" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="telefCelular" ColumnName="telefCelular" />
+          <ScalarProperty Name="telefFijo" ColumnName="telefFijo" />
+          <ScalarProperty Name="idEscuela" ColumnName="idEscuela" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Estado">
+      <EntityTypeMapping TypeName="PPAIModel.Estado">
+        <MappingFragment StoreEntitySet="Estado">
+          <ScalarProperty Name="idEstado" ColumnName="idEstado" />
+          <ScalarProperty Name="nombreEstado" ColumnName="nombreEstado" />
+          <ScalarProperty Name="ambitoEstado" ColumnName="ambitoEstado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Exposicion">
+      <EntityTypeMapping TypeName="PPAIModel.Exposicion">
+        <MappingFragment StoreEntitySet="Exposicion">
+          <ScalarProperty Name="fechaFin" ColumnName="fechaFin" />
+          <ScalarProperty Name="fechaFinReplanificada" ColumnName="fechaFinReplanificada" />
+          <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
+          <ScalarProperty Name="fechaInicioReplanificada" ColumnName="fechaInicioReplanificada" />
+          <ScalarProperty Name="horaApertura" ColumnName="horaApertura" />
+          <ScalarProperty Name="horaCierre" ColumnName="horaCierre" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idExposicion" ColumnName="idExposicion" />
+          <ScalarProperty Name="idSede" ColumnName="idSede" />
+          <ScalarProperty Name="idTipoExposicion" ColumnName="idTipoExposicion" />
+          <ScalarProperty Name="publicoDestino" ColumnName="publicoDestino" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExposicionesXSede">
+      <EntityTypeMapping TypeName="PPAIModel.ExposicionesXSede">
+        <MappingFragment StoreEntitySet="ExposicionesXSede">
+          <ScalarProperty Name="idSede" ColumnName="idSede" />
+          <ScalarProperty Name="idExposicion" ColumnName="idExposicion" />
+          <ScalarProperty Name="fechaHoraInicio" ColumnName="fechaHoraInicio" />
+          <ScalarProperty Name="fechaHoraFin" ColumnName="fechaHoraFin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HORARIOS">
+      <EntityTypeMapping TypeName="PPAIModel.HORARIOS">
+        <MappingFragment StoreEntitySet="HORARIOS">
+          <ScalarProperty Name="idHorario" ColumnName="idHorario" />
+          <ScalarProperty Name="horaSalida" ColumnName="horaSalida" />
+          <ScalarProperty Name="horaIngreso" ColumnName="horaIngreso" />
+          <ScalarProperty Name="diaSemana" ColumnName="diaSemana" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Obra">
+      <EntityTypeMapping TypeName="PPAIModel.Obra">
+        <MappingFragment StoreEntitySet="Obra">
+          <ScalarProperty Name="alto" ColumnName="alto" />
+          <ScalarProperty Name="ancho" ColumnName="ancho" />
+          <ScalarProperty Name="codigoSensor" ColumnName="codigoSensor" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="duracionExtenida" ColumnName="duracionExtenida" />
+          <ScalarProperty Name="duracionResumida" ColumnName="duracionResumida" />
+          <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
+          <ScalarProperty Name="fechaPrimerIngreso" ColumnName="fechaPrimerIngreso" />
+          <ScalarProperty Name="nombreObra" ColumnName="nombreObra" />
+          <ScalarProperty Name="peso" ColumnName="peso" />
+          <ScalarProperty Name="valuacion" ColumnName="valuacion" />
+          <ScalarProperty Name="idObra" ColumnName="idObra" />
+          <ScalarProperty Name="idExposicion" ColumnName="idExposicion" />
+          <ScalarProperty Name="idSede" ColumnName="idSede" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PublicoDestino">
+      <EntityTypeMapping TypeName="PPAIModel.PublicoDestino">
+        <MappingFragment StoreEntitySet="PublicoDestino">
+          <ScalarProperty Name="caracteristicas" ColumnName="caracteristicas" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idPublicoDestino" ColumnName="idPublicoDestino" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReservasXSede">
+      <EntityTypeMapping TypeName="PPAIModel.ReservasXSede">
+        <MappingFragment StoreEntitySet="ReservasXSede">
+          <ScalarProperty Name="numeroReserva" ColumnName="numeroReserva" />
+          <ScalarProperty Name="idSede" ColumnName="idSede" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReservaVisita">
+      <EntityTypeMapping TypeName="PPAIModel.ReservaVisita">
+        <MappingFragment StoreEntitySet="ReservaVisita">
+          <ScalarProperty Name="cantidadAlumno" ColumnName="cantidadAlumno" />
+          <ScalarProperty Name="cantidadAlumnoConfirmada" ColumnName="cantidadAlumnoConfirmada" />
+          <ScalarProperty Name="duracionEstimada" ColumnName="duracionEstimada" />
+          <ScalarProperty Name="fechaHoraCreacion" ColumnName="fechaHoraCreacion" />
+          <ScalarProperty Name="fechaHoraReserva" ColumnName="fechaHoraReserva" />
+          <ScalarProperty Name="horaFinReal" ColumnName="horaFinReal" />
+          <ScalarProperty Name="horaInicioReal" ColumnName="horaInicioReal" />
+          <ScalarProperty Name="idReserva" ColumnName="idReserva" />
+          <ScalarProperty Name="idSede" ColumnName="idSede" />
+          <ScalarProperty Name="idEscuela" ColumnName="idEscuela" />
+          <ScalarProperty Name="fechaHoraInicio" ColumnName="fechaHoraInicio" />
+          <ScalarProperty Name="ordId" ColumnName="ordId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sede">
+      <EntityTypeMapping TypeName="PPAIModel.Sede">
+        <MappingFragment StoreEntitySet="Sede">
+          <ScalarProperty Name="idSede" ColumnName="idSede" />
+          <ScalarProperty Name="cantMaxPorGuia" ColumnName="cantMaxPorGuia" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="cantMaximaVisitantes" ColumnName="cantMaximaVisitantes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sesion">
+      <EntityTypeMapping TypeName="PPAIModel.Sesion">
+        <MappingFragment StoreEntitySet="Sesion">
+          <ScalarProperty Name="fechaYHoraFin" ColumnName="fechaYHoraFin" />
+          <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+          <ScalarProperty Name="fechaYHoraInicio" ColumnName="fechaYHoraInicio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sexos">
+      <EntityTypeMapping TypeName="PPAIModel.Sexos">
+        <MappingFragment StoreEntitySet="Sexos">
+          <ScalarProperty Name="idSexo" ColumnName="idSexo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="PPAIModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoExposicion">
+      <EntityTypeMapping TypeName="PPAIModel.TipoExposicion">
+        <MappingFragment StoreEntitySet="TipoExposicion">
+          <ScalarProperty Name="idTipoExposicion" ColumnName="idTipoExposicion" />
+          <ScalarProperty Name="nombreTipoExposicion" ColumnName="nombreTipoExposicion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoVisita">
+      <EntityTypeMapping TypeName="PPAIModel.TipoVisita">
+        <MappingFragment StoreEntitySet="TipoVisita">
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idTipoVisita" ColumnName="idTipoVisita" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuario">
+      <EntityTypeMapping TypeName="PPAIModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="caducidad" ColumnName="caducidad" />
+          <ScalarProperty Name="contraseña" ColumnName="contraseña" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+          <ScalarProperty Name="cuitEmpleado" ColumnName="cuitEmpleado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Valuaciones">
+      <EntityTypeMapping TypeName="PPAIModel.Valuaciones">
+        <MappingFragment StoreEntitySet="Valuaciones">
+          <ScalarProperty Name="idValuacion" ColumnName="idValuacion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Horario_X_Empleado" TypeName="PPAIModel.Horario_X_Empleado" StoreEntitySet="Horario_X_Empleado">
+      <EndProperty Name="HORARIOS">
+        <ScalarProperty Name="idHorario" ColumnName="idHorario" />
+      </EndProperty>
+      <EndProperty Name="Empleado">
+        <ScalarProperty Name="cuit" ColumnName="cuit" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PublicosXExposicion" TypeName="PPAIModel.PublicosXExposicion" StoreEntitySet="PublicosXExposicion">
+      <EndProperty Name="PublicoDestino">
+        <ScalarProperty Name="idPublicoDestino" ColumnName="idPublicoDestino" />
+      </EndProperty>
+      <EndProperty Name="Exposicion">
+        <ScalarProperty Name="idExposicion" ColumnName="idExposicion" />
+        <ScalarProperty Name="idSede" ColumnName="idSede" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,30 @@
+C:\Users\ignac\source\repos\PPAI\PPAI\bin\Debug\PPAI.exe.config
+C:\Users\ignac\source\repos\PPAI\PPAI\bin\Debug\PPAI.exe
+C:\Users\ignac\source\repos\PPAI\PPAI\bin\Debug\PPAI.pdb
+C:\Users\ignac\source\repos\PPAI\PPAI\bin\Debug\EntityFramework.dll
+C:\Users\ignac\source\repos\PPAI\PPAI\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ignac\source\repos\PPAI\PPAI\bin\Debug\EntityFramework.xml
+C:\Users\ignac\source\repos\PPAI\PPAI\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ignac\source\repos\PPAI\PPAI\obj\Debug\PPAI.csprojAssemblyReference.cache
+C:\Users\ignac\source\repos\PPAI\PPAI\obj\Debug\PPAI.Properties.Resources.resources
+C:\Users\ignac\source\repos\PPAI\PPAI\obj\Debug\PPAI.csproj.GenerateResource.cache
+C:\Users\ignac\source\repos\PPAI\PPAI\obj\Debug\PPAI.csproj.CoreCompileInputs.cache
+C:\Users\ignac\source\repos\PPAI\PPAI\obj\Debug\PPAI.csproj.CopyComplete
+C:\Users\ignac\source\repos\PPAI\PPAI\obj\Debug\PPAI.exe
+C:\Users\ignac\source\repos\PPAI\PPAI\obj\Debug\PPAI.pdb
+C:\Users\ignac\source\repos\PPAI\PPAI\obj\Debug\PPAI.GestorRegistrarReservaVisitaGuiada.resources
+C:\Users\ignac\Desktop\backup definitivo PPAI\PPAI\PPAI\bin\Debug\PPAI.exe.config
+C:\Users\ignac\Desktop\backup definitivo PPAI\PPAI\PPAI\bin\Debug\PPAI.exe
+C:\Users\ignac\Desktop\backup definitivo PPAI\PPAI\PPAI\bin\Debug\PPAI.pdb
+C:\Users\ignac\Desktop\backup definitivo PPAI\PPAI\PPAI\bin\Debug\EntityFramework.dll
+C:\Users\ignac\Desktop\backup definitivo PPAI\PPAI\PPAI\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ignac\Desktop\backup definitivo PPAI\PPAI\PPAI\bin\Debug\EntityFramework.xml
+C:\Users\ignac\Desktop\backup definitivo PPAI\PPAI\PPAI\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ignac\Desktop\backup definitivo PPAI\PPAI\PPAI\obj\Debug\PPAI.csprojAssemblyReference.cache
+C:\Users\ignac\Desktop\backup definitivo PPAI\PPAI\PPAI\obj\Debug\PPAI.GestorRegistrarReservaVisitaGuiada.resources
+C:\Users\ignac\Desktop\backup definitivo PPAI\PPAI\PPAI\obj\Debug\PPAI.Properties.Resources.resources
+C:\Users\ignac\Desktop\backup definitivo PPAI\PPAI\PPAI\obj\Debug\PPAI.csproj.GenerateResource.cache
+C:\Users\ignac\Desktop\backup definitivo PPAI\PPAI\PPAI\obj\Debug\PPAI.csproj.CoreCompileInputs.cache
+C:\Users\ignac\Desktop\backup definitivo PPAI\PPAI\PPAI\obj\Debug\PPAI.csproj.CopyComplete
+C:\Users\ignac\Desktop\backup definitivo PPAI\PPAI\PPAI\obj\Debug\PPAI.exe
+C:\Users\ignac\Desktop\backup definitivo PPAI\PPAI\PPAI\obj\Debug\PPAI.pdb
