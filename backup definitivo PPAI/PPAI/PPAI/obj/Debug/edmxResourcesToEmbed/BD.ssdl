@@ -1,13 +1,135 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="PPAIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="PPAIModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="PPAIModelStoreContainer">
+    <EntitySet Name="AsignacionVisita" EntityType="PPAIModel.Store.AsignacionVisita" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CambioEstado" EntityType="PPAIModel.Store.CambioEstado" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Cargo" EntityType="PPAIModel.Store.Cargo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DetalleExposicion" EntityType="PPAIModel.Store.DetalleExposicion" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Empleado" EntityType="PPAIModel.Store.Empleado" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Escuela" EntityType="PPAIModel.Store.Escuela" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Estado" EntityType="PPAIModel.Store.Estado" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Exposicion" EntityType="PPAIModel.Store.Exposicion" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ExposicionesXSede" EntityType="PPAIModel.Store.ExposicionesXSede" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="HORARIOS" EntityType="PPAIModel.Store.HORARIOS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Obra" EntityType="PPAIModel.Store.Obra" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PublicoDestino" EntityType="PPAIModel.Store.PublicoDestino" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ReservasXSede" EntityType="PPAIModel.Store.ReservasXSede" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ReservaVisita" EntityType="PPAIModel.Store.ReservaVisita" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Sede" EntityType="PPAIModel.Store.Sede" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Sesion" EntityType="PPAIModel.Store.Sesion" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Sexos" EntityType="PPAIModel.Store.Sexos" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysdiagrams" EntityType="PPAIModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TipoExposicion" EntityType="PPAIModel.Store.TipoExposicion" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TipoVisita" EntityType="PPAIModel.Store.TipoVisita" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Usuario" EntityType="PPAIModel.Store.Usuario" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Valuaciones" EntityType="PPAIModel.Store.Valuaciones" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Horario_X_Empleado" EntityType="PPAIModel.Store.Horario_X_Empleado" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PublicosXExposicion" EntityType="PPAIModel.Store.PublicosXExposicion" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="Fk_AsignacionGuia" Association="PPAIModel.Store.Fk_AsignacionGuia">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="AsignacionVisita" EntitySet="AsignacionVisita" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_AsignacionReSede" Association="PPAIModel.Store.Fk_AsignacionReSede">
+      <End Role="ReservaVisita" EntitySet="ReservaVisita" />
+      <End Role="AsignacionVisita" EntitySet="AsignacionVisita" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ReservaVisita__73BA3083" Association="PPAIModel.Store.FK__ReservaVisita__73BA3083">
+      <End Role="CambioEstado" EntitySet="CambioEstado" />
+      <End Role="ReservaVisita" EntitySet="ReservaVisita" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_CambioEst" Association="PPAIModel.Store.Fk_CambioEst">
+      <End Role="Estado" EntitySet="Estado" />
+      <End Role="CambioEstado" EntitySet="CambioEstado" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_EmpleadoCargo" Association="PPAIModel.Store.Fk_EmpleadoCargo">
+      <End Role="Cargo" EntitySet="Cargo" />
+      <End Role="Empleado" EntitySet="Empleado" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_DetalleExpObra" Association="PPAIModel.Store.Fk_DetalleExpObra">
+      <End Role="Obra" EntitySet="Obra" />
+      <End Role="DetalleExposicion" EntitySet="DetalleExposicion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleExpoSede" Association="PPAIModel.Store.FK_DetalleExpoSede">
+      <End Role="Exposicion" EntitySet="Exposicion" />
+      <End Role="DetalleExposicion" EntitySet="DetalleExposicion" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_EmpleadoSede" Association="PPAIModel.Store.Fk_EmpleadoSede">
+      <End Role="Sede" EntitySet="Sede" />
+      <End Role="Empleado" EntitySet="Empleado" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_EmpleadoSexo" Association="PPAIModel.Store.Fk_EmpleadoSexo">
+      <End Role="Sexos" EntitySet="Sexos" />
+      <End Role="Empleado" EntitySet="Empleado" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_UsuarioEmpleado" Association="PPAIModel.Store.Fk_UsuarioEmpleado">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_ReservaEscuela" Association="PPAIModel.Store.Fk_ReservaEscuela">
+      <End Role="Escuela" EntitySet="Escuela" />
+      <End Role="ReservaVisita" EntitySet="ReservaVisita" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_ExpoPublico" Association="PPAIModel.Store.Fk_ExpoPublico">
+      <End Role="PublicoDestino" EntitySet="PublicoDestino" />
+      <End Role="Exposicion" EntitySet="Exposicion" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_ExpoSede" Association="PPAIModel.Store.Fk_ExpoSede">
+      <End Role="Sede" EntitySet="Sede" />
+      <End Role="Exposicion" EntitySet="Exposicion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExpoSedeExpo" Association="PPAIModel.Store.FK_ExpoSedeExpo">
+      <End Role="Exposicion" EntitySet="Exposicion" />
+      <End Role="ExposicionesXSede" EntitySet="ExposicionesXSede" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_ExpoTipoExpo" Association="PPAIModel.Store.Fk_ExpoTipoExpo">
+      <End Role="TipoExposicion" EntitySet="TipoExposicion" />
+      <End Role="Exposicion" EntitySet="Exposicion" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_ObraExpoSede" Association="PPAIModel.Store.Fk_ObraExpoSede">
+      <End Role="Exposicion" EntitySet="Exposicion" />
+      <End Role="Obra" EntitySet="Obra" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_ObraValuacion" Association="PPAIModel.Store.Fk_ObraValuacion">
+      <End Role="Valuaciones" EntitySet="Valuaciones" />
+      <End Role="Obra" EntitySet="Obra" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_ReservaXSede" Association="PPAIModel.Store.Fk_ReservaXSede">
+      <End Role="ReservaVisita" EntitySet="ReservaVisita" />
+      <End Role="ReservasXSede" EntitySet="ReservasXSede" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_ReservaSede" Association="PPAIModel.Store.Fk_ReservaSede">
+      <End Role="Sede" EntitySet="Sede" />
+      <End Role="ReservaVisita" EntitySet="ReservaVisita" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_SesionUsuario" Association="PPAIModel.Store.Fk_SesionUsuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Sesion" EntitySet="Sesion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Horario_X_Empleado_HORARIOS" Association="PPAIModel.Store.FK_Horario_X_Empleado_HORARIOS">
+      <End Role="HORARIOS" EntitySet="HORARIOS" />
+      <End Role="Horario_X_Empleado" EntitySet="Horario_X_Empleado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Horario_X_Empleado_Empleado" Association="PPAIModel.Store.FK_Horario_X_Empleado_Empleado">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="Horario_X_Empleado" EntitySet="Horario_X_Empleado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PublicosXExposicion_PublicoDestino" Association="PPAIModel.Store.FK_PublicosXExposicion_PublicoDestino">
+      <End Role="PublicoDestino" EntitySet="PublicoDestino" />
+      <End Role="PublicosXExposicion" EntitySet="PublicosXExposicion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PublicosXExposicion_Exposicion" Association="PPAIModel.Store.FK_PublicosXExposicion_Exposicion">
+      <End Role="Exposicion" EntitySet="Exposicion" />
+      <End Role="PublicosXExposicion" EntitySet="PublicosXExposicion" />
+    </AssociationSet>
+  </EntityContainer>
   <EntityType Name="AsignacionVisita">
     <Key>
       <PropertyRef Name="fechaHoraInicio" />
       <PropertyRef Name="idReserva" />
       <PropertyRef Name="idSede" />
     </Key>
-    <Property Name="fechaHoraFin" Type="datetime" />
-    <Property Name="guiaAsignado" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="fechaHoraFin" Type="datetime" Nullable="false" />
+    <Property Name="guiaAsignado" Type="varchar" Nullable="false" MaxLength="20" />
     <Property Name="fechaHoraInicio" Type="datetime" Nullable="false" />
     <Property Name="idReserva" Type="int" Nullable="false" />
     <Property Name="idSede" Type="int" Nullable="false" />
@@ -17,18 +139,18 @@
       <PropertyRef Name="fechaHoraInicio" />
       <PropertyRef Name="ordId" />
     </Key>
-    <Property Name="fechaHoraFin" Type="datetime" />
+    <Property Name="fechaHoraFin" Type="datetime" Nullable="true" />
     <Property Name="fechaHoraInicio" Type="datetime" Nullable="false" />
     <Property Name="ordId" Type="int" Nullable="false" />
-    <Property Name="idEstado" Type="int" />
+    <Property Name="idEstado" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="Cargo">
     <Key>
       <PropertyRef Name="idCargo" />
     </Key>
     <Property Name="idCargo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="descripcion" Type="varchar" MaxLength="50" />
+    <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="descripcion" Type="varchar" Nullable="true" MaxLength="50" />
   </EntityType>
   <EntityType Name="DetalleExposicion">
     <Key>
@@ -36,7 +158,7 @@
       <PropertyRef Name="idExposicion" />
       <PropertyRef Name="idSede" />
     </Key>
-    <Property Name="lugarAsignado" Type="varchar" MaxLength="25" />
+    <Property Name="lugarAsignado" Type="varchar" Nullable="true" MaxLength="25" />
     <Property Name="idObra" Type="int" Nullable="false" />
     <Property Name="idExposicion" Type="int" Nullable="false" />
     <Property Name="idSede" Type="int" Nullable="false" />
@@ -45,31 +167,31 @@
     <Key>
       <PropertyRef Name="cuit" />
     </Key>
-    <Property Name="apellido" Type="nchar" MaxLength="10" />
-    <Property Name="codigoValuacion" Type="int" />
-    <Property Name="cuit" Type="varchar" MaxLength="20" Nullable="false" />
-    <Property Name="dni" Type="int" />
-    <Property Name="calle" Type="nchar" MaxLength="10" />
-    <Property Name="numeroCalle" Type="int" />
-    <Property Name="fechaIngreso" Type="date" />
-    <Property Name="fechaNacimiento" Type="date" />
-    <Property Name="mail" Type="text" />
-    <Property Name="nombre" Type="nchar" MaxLength="10" />
-    <Property Name="idSexo" Type="int" />
-    <Property Name="telefono" Type="int" />
-    <Property Name="cargo" Type="int" />
-    <Property Name="idSede" Type="int" />
+    <Property Name="apellido" Type="nchar" Nullable="true" MaxLength="10" />
+    <Property Name="codigoValuacion" Type="int" Nullable="true" />
+    <Property Name="cuit" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="dni" Type="int" Nullable="true" />
+    <Property Name="calle" Type="nchar" Nullable="true" MaxLength="10" />
+    <Property Name="numeroCalle" Type="int" Nullable="true" />
+    <Property Name="fechaIngreso" Type="datetime" Nullable="true" />
+    <Property Name="fechaNacimiento" Type="datetime" Nullable="true" />
+    <Property Name="mail" Type="varchar(max)" Nullable="true" />
+    <Property Name="nombre" Type="nchar" Nullable="true" MaxLength="10" />
+    <Property Name="idSexo" Type="int" Nullable="true" />
+    <Property Name="telefono" Type="int" Nullable="true" />
+    <Property Name="cargo" Type="int" Nullable="true" />
+    <Property Name="idSede" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="Escuela">
     <Key>
       <PropertyRef Name="idEscuela" />
     </Key>
-    <Property Name="calle" Type="nchar" MaxLength="10" />
-    <Property Name="numeroCalle" Type="int" />
-    <Property Name="mail" Type="varchar" MaxLength="50" />
-    <Property Name="nombre" Type="nchar" MaxLength="20" />
-    <Property Name="telefCelular" Type="int" />
-    <Property Name="telefFijo" Type="int" />
+    <Property Name="calle" Type="nchar" Nullable="true" MaxLength="10" />
+    <Property Name="numeroCalle" Type="int" Nullable="true" />
+    <Property Name="mail" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="nombre" Type="nchar" Nullable="true" MaxLength="20" />
+    <Property Name="telefCelular" Type="int" Nullable="true" />
+    <Property Name="telefFijo" Type="int" Nullable="true" />
     <Property Name="idEscuela" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
   <EntityType Name="Estado">
@@ -77,25 +199,25 @@
       <PropertyRef Name="idEstado" />
     </Key>
     <Property Name="idEstado" Type="int" Nullable="false" />
-    <Property Name="nombreEstado" Type="text" Nullable="false" />
-    <Property Name="ambitoEstado" Type="text" Nullable="false" />
+    <Property Name="nombreEstado" Type="varchar(max)" Nullable="false" />
+    <Property Name="ambitoEstado" Type="varchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Exposicion">
     <Key>
       <PropertyRef Name="idExposicion" />
       <PropertyRef Name="idSede" />
     </Key>
-    <Property Name="fechaFin" Type="date" />
-    <Property Name="fechaFinReplanificada" Type="date" />
-    <Property Name="fechaInicio" Type="date" />
-    <Property Name="fechaInicioReplanificada" Type="date" />
-    <Property Name="horaApertura" Type="time" Precision="7" />
-    <Property Name="horaCierre" Type="time" Precision="7" />
-    <Property Name="nombre" Type="nchar" MaxLength="10" />
+    <Property Name="fechaFin" Type="datetime" Nullable="true" />
+    <Property Name="fechaFinReplanificada" Type="datetime" Nullable="true" />
+    <Property Name="fechaInicio" Type="datetime" Nullable="true" />
+    <Property Name="fechaInicioReplanificada" Type="datetime" Nullable="true" />
+    <Property Name="horaApertura" Type="time" Nullable="true" Precision="7" />
+    <Property Name="horaCierre" Type="time" Nullable="true" Precision="7" />
+    <Property Name="nombre" Type="nchar" Nullable="true" MaxLength="10" />
     <Property Name="idExposicion" Type="int" Nullable="false" />
     <Property Name="idSede" Type="int" Nullable="false" />
-    <Property Name="idTipoExposicion" Type="int" />
-    <Property Name="publicoDestino" Type="int" />
+    <Property Name="idTipoExposicion" Type="int" Nullable="true" />
+    <Property Name="publicoDestino" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="ExposicionesXSede">
     <Key>
@@ -104,62 +226,44 @@
     </Key>
     <Property Name="idSede" Type="int" Nullable="false" />
     <Property Name="idExposicion" Type="int" Nullable="false" />
-    <Property Name="fechaHoraInicio" Type="datetime" />
-    <Property Name="fechaHoraFin" Type="datetime" />
-  </EntityType>
-  <EntityType Name="Horario_X_Empleado">
-    <Key>
-      <PropertyRef Name="cuit" />
-      <PropertyRef Name="idHorario" />
-    </Key>
-    <Property Name="cuit" Type="varchar" MaxLength="20" Nullable="false" />
-    <Property Name="idHorario" Type="int" Nullable="false" />
+    <Property Name="fechaHoraInicio" Type="datetime" Nullable="true" />
+    <Property Name="fechaHoraFin" Type="datetime" Nullable="true" />
   </EntityType>
   <EntityType Name="HORARIOS">
     <Key>
       <PropertyRef Name="idHorario" />
     </Key>
     <Property Name="idHorario" Type="int" Nullable="false" />
-    <Property Name="horaSalida" Type="time" Precision="7" Nullable="false" />
-    <Property Name="horaIngreso" Type="time" Precision="7" Nullable="false" />
-    <Property Name="diaSemana" Type="varchar" MaxLength="25" />
+    <Property Name="horaSalida" Type="time" Nullable="false" Precision="7" />
+    <Property Name="horaIngreso" Type="time" Nullable="false" Precision="7" />
+    <Property Name="diaSemana" Type="varchar" Nullable="true" MaxLength="25" />
   </EntityType>
   <EntityType Name="Obra">
     <Key>
       <PropertyRef Name="idObra" />
     </Key>
-    <Property Name="alto" Type="int" />
-    <Property Name="ancho" Type="int" />
-    <Property Name="codigoSensor" Type="int" />
-    <Property Name="descripcion" Type="text" />
-    <Property Name="duracionExtenida" Type="int" />
-    <Property Name="duracionResumida" Type="int" />
-    <Property Name="fechaCreacion" Type="date" />
-    <Property Name="fechaPrimerIngreso" Type="date" />
-    <Property Name="nombreObra" Type="text" />
-    <Property Name="peso" Type="int" />
-    <Property Name="valuacion" Type="int" />
+    <Property Name="alto" Type="int" Nullable="true" />
+    <Property Name="ancho" Type="int" Nullable="true" />
+    <Property Name="codigoSensor" Type="int" Nullable="true" />
+    <Property Name="descripcion" Type="varchar(max)" Nullable="true" />
+    <Property Name="duracionExtenida" Type="int" Nullable="true" />
+    <Property Name="duracionResumida" Type="int" Nullable="true" />
+    <Property Name="fechaCreacion" Type="datetime" Nullable="true" />
+    <Property Name="fechaPrimerIngreso" Type="datetime" Nullable="true" />
+    <Property Name="nombreObra" Type="varchar(max)" Nullable="true" />
+    <Property Name="peso" Type="int" Nullable="true" />
+    <Property Name="valuacion" Type="int" Nullable="true" />
     <Property Name="idObra" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="idExposicion" Type="int" />
-    <Property Name="idSede" Type="int" />
+    <Property Name="idExposicion" Type="int" Nullable="true" />
+    <Property Name="idSede" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="PublicoDestino">
     <Key>
       <PropertyRef Name="idPublicoDestino" />
     </Key>
-    <Property Name="caracteristicas" Type="nchar" MaxLength="50" />
-    <Property Name="nombre" Type="nchar" MaxLength="25" />
+    <Property Name="caracteristicas" Type="nchar" Nullable="true" MaxLength="50" />
+    <Property Name="nombre" Type="nchar" Nullable="true" MaxLength="25" />
     <Property Name="idPublicoDestino" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-  </EntityType>
-  <EntityType Name="PublicosXExposicion">
-    <Key>
-      <PropertyRef Name="idExposicion" />
-      <PropertyRef Name="idPublicoDestino" />
-      <PropertyRef Name="idSede" />
-    </Key>
-    <Property Name="idExposicion" Type="int" Nullable="false" />
-    <Property Name="idPublicoDestino" Type="int" Nullable="false" />
-    <Property Name="idSede" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ReservasXSede">
     <Key>
@@ -174,34 +278,34 @@
       <PropertyRef Name="idReserva" />
       <PropertyRef Name="idSede" />
     </Key>
-    <Property Name="cantidadAlumno" Type="int" />
-    <Property Name="cantidadAlumnoConfirmada" Type="int" />
-    <Property Name="duracionEstimada" Type="int" />
-    <Property Name="fechaHoraCreacion" Type="datetime" />
-    <Property Name="fechaHoraReserva" Type="datetime" />
-    <Property Name="horaFinReal" Type="time" Precision="7" />
-    <Property Name="horaInicioReal" Type="time" Precision="7" />
-    <Property Name="idReserva" Type="int" StoreGeneratedPattern="None" Nullable="false" />
+    <Property Name="cantidadAlumno" Type="int" Nullable="true" />
+    <Property Name="cantidadAlumnoConfirmada" Type="int" Nullable="true" />
+    <Property Name="duracionEstimada" Type="int" Nullable="true" />
+    <Property Name="fechaHoraCreacion" Type="datetime" Nullable="true" />
+    <Property Name="fechaHoraReserva" Type="datetime" Nullable="true" />
+    <Property Name="horaFinReal" Type="time" Nullable="true" Precision="7" />
+    <Property Name="horaInicioReal" Type="time" Nullable="true" Precision="7" />
+    <Property Name="idReserva" Type="int" Nullable="false" />
     <Property Name="idSede" Type="int" Nullable="false" />
-    <Property Name="idEscuela" Type="int" />
-    <Property Name="fechaHoraInicio" Type="datetime" />
-    <Property Name="ordId" Type="int" />
+    <Property Name="idEscuela" Type="int" Nullable="true" />
+    <Property Name="fechaHoraInicio" Type="datetime" Nullable="true" />
+    <Property Name="ordId" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="Sede">
     <Key>
       <PropertyRef Name="idSede" />
     </Key>
     <Property Name="idSede" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="cantMaxPorGuia" Type="int" />
-    <Property Name="nombre" Type="nchar" MaxLength="25" />
-    <Property Name="cantMaximaVisitantes" Type="int" />
+    <Property Name="cantMaxPorGuia" Type="int" Nullable="true" />
+    <Property Name="nombre" Type="nchar" Nullable="true" MaxLength="25" />
+    <Property Name="cantMaximaVisitantes" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="Sesion">
     <Key>
       <PropertyRef Name="idUsuario" />
       <PropertyRef Name="fechaYHoraInicio" />
     </Key>
-    <Property Name="fechaYHoraFin" Type="datetime" />
+    <Property Name="fechaYHoraFin" Type="datetime" Nullable="true" />
     <Property Name="idUsuario" Type="int" Nullable="false" />
     <Property Name="fechaYHoraInicio" Type="datetime" Nullable="false" />
   </EntityType>
@@ -210,66 +314,70 @@
       <PropertyRef Name="idSexo" />
     </Key>
     <Property Name="idSexo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="nombre" Type="nchar" MaxLength="25" />
+    <Property Name="nombre" Type="nchar" Nullable="true" MaxLength="25" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
       <PropertyRef Name="diagram_id" />
     </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
     <Property Name="principal_id" Type="int" Nullable="false" />
     <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
+    <Property Name="version" Type="int" Nullable="true" />
+    <Property Name="definition" Type="varbinary(max)" Nullable="true" />
   </EntityType>
   <EntityType Name="TipoExposicion">
     <Key>
       <PropertyRef Name="idTipoExposicion" />
     </Key>
     <Property Name="idTipoExposicion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="nombreTipoExposicion" Type="nchar" MaxLength="25" />
+    <Property Name="nombreTipoExposicion" Type="nchar" Nullable="true" MaxLength="25" />
   </EntityType>
   <EntityType Name="TipoVisita">
     <Key>
       <PropertyRef Name="idTipoVisita" />
     </Key>
-    <Property Name="nombre" Type="nchar" MaxLength="25" />
+    <Property Name="nombre" Type="nchar" Nullable="true" MaxLength="25" />
     <Property Name="idTipoVisita" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
   <EntityType Name="Usuario">
     <Key>
       <PropertyRef Name="idUsuario" />
     </Key>
-    <Property Name="caducidad" Type="datetime" />
-    <Property Name="contraseña" Type="nchar" MaxLength="25" />
-    <Property Name="nombre" Type="nchar" MaxLength="25" />
+    <Property Name="caducidad" Type="datetime" Nullable="true" />
+    <Property Name="contraseña" Type="nchar" Nullable="true" MaxLength="25" />
+    <Property Name="nombre" Type="nchar" Nullable="true" MaxLength="25" />
     <Property Name="idUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="cuitEmpleado" Type="varchar" MaxLength="20" />
+    <Property Name="cuitEmpleado" Type="varchar" Nullable="true" MaxLength="20" />
   </EntityType>
   <EntityType Name="Valuaciones">
     <Key>
       <PropertyRef Name="idValuacion" />
     </Key>
     <Property Name="idValuacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="nombre" Type="nchar" MaxLength="25" />
+    <Property Name="nombre" Type="nchar" Nullable="true" MaxLength="25" />
   </EntityType>
-  <Association Name="FK__ReservaVisita__73BA3083">
-    <End Role="CambioEstado" Type="Self.CambioEstado" Multiplicity="0..1" />
-    <End Role="ReservaVisita" Type="Self.ReservaVisita" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CambioEstado">
-        <PropertyRef Name="fechaHoraInicio" />
-        <PropertyRef Name="ordId" />
-      </Principal>
-      <Dependent Role="ReservaVisita">
-        <PropertyRef Name="fechaHoraInicio" />
-        <PropertyRef Name="ordId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
+  <EntityType Name="Horario_X_Empleado">
+    <Key>
+      <PropertyRef Name="HORARIOS_idHorario" />
+      <PropertyRef Name="Empleado_cuit" />
+    </Key>
+    <Property Name="HORARIOS_idHorario" Type="int" Nullable="false" />
+    <Property Name="Empleado_cuit" Type="varchar" Nullable="false" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="PublicosXExposicion">
+    <Key>
+      <PropertyRef Name="PublicoDestino2_idPublicoDestino" />
+      <PropertyRef Name="Exposicion1_idExposicion" />
+      <PropertyRef Name="Exposicion1_idSede" />
+    </Key>
+    <Property Name="PublicoDestino2_idPublicoDestino" Type="int" Nullable="false" />
+    <Property Name="Exposicion1_idExposicion" Type="int" Nullable="false" />
+    <Property Name="Exposicion1_idSede" Type="int" Nullable="false" />
+  </EntityType>
   <Association Name="Fk_AsignacionGuia">
-    <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
-    <End Role="AsignacionVisita" Type="Self.AsignacionVisita" Multiplicity="*" />
+    <End Role="Empleado" Type="PPAIModel.Store.Empleado" Multiplicity="1" />
+    <End Role="AsignacionVisita" Type="PPAIModel.Store.AsignacionVisita" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Empleado">
         <PropertyRef Name="cuit" />
@@ -280,8 +388,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="Fk_AsignacionReSede">
-    <End Role="ReservaVisita" Type="Self.ReservaVisita" Multiplicity="1" />
-    <End Role="AsignacionVisita" Type="Self.AsignacionVisita" Multiplicity="*" />
+    <End Role="ReservaVisita" Type="PPAIModel.Store.ReservaVisita" Multiplicity="1" />
+    <End Role="AsignacionVisita" Type="PPAIModel.Store.AsignacionVisita" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="ReservaVisita">
         <PropertyRef Name="idReserva" />
@@ -293,9 +401,23 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__ReservaVisita__73BA3083">
+    <End Role="CambioEstado" Type="PPAIModel.Store.CambioEstado" Multiplicity="0..1" />
+    <End Role="ReservaVisita" Type="PPAIModel.Store.ReservaVisita" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CambioEstado">
+        <PropertyRef Name="fechaHoraInicio" />
+        <PropertyRef Name="ordId" />
+      </Principal>
+      <Dependent Role="ReservaVisita">
+        <PropertyRef Name="fechaHoraInicio" />
+        <PropertyRef Name="ordId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="Fk_CambioEst">
-    <End Role="Estado" Type="Self.Estado" Multiplicity="0..1" />
-    <End Role="CambioEstado" Type="Self.CambioEstado" Multiplicity="*" />
+    <End Role="Estado" Type="PPAIModel.Store.Estado" Multiplicity="0..1" />
+    <End Role="CambioEstado" Type="PPAIModel.Store.CambioEstado" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Estado">
         <PropertyRef Name="idEstado" />
@@ -305,9 +427,21 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="Fk_EmpleadoCargo">
+    <End Role="Cargo" Type="PPAIModel.Store.Cargo" Multiplicity="0..1" />
+    <End Role="Empleado" Type="PPAIModel.Store.Empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cargo">
+        <PropertyRef Name="idCargo" />
+      </Principal>
+      <Dependent Role="Empleado">
+        <PropertyRef Name="cargo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="Fk_DetalleExpObra">
-    <End Role="Obra" Type="Self.Obra" Multiplicity="1" />
-    <End Role="DetalleExposicion" Type="Self.DetalleExposicion" Multiplicity="*" />
+    <End Role="Obra" Type="PPAIModel.Store.Obra" Multiplicity="1" />
+    <End Role="DetalleExposicion" Type="PPAIModel.Store.DetalleExposicion" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Obra">
         <PropertyRef Name="idObra" />
@@ -318,8 +452,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_DetalleExpoSede">
-    <End Role="Exposicion" Type="Self.Exposicion" Multiplicity="1" />
-    <End Role="DetalleExposicion" Type="Self.DetalleExposicion" Multiplicity="*" />
+    <End Role="Exposicion" Type="PPAIModel.Store.Exposicion" Multiplicity="1" />
+    <End Role="DetalleExposicion" Type="PPAIModel.Store.DetalleExposicion" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Exposicion">
         <PropertyRef Name="idExposicion" />
@@ -331,21 +465,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="Fk_EmpleadoCargo">
-    <End Role="Cargo" Type="Self.Cargo" Multiplicity="0..1" />
-    <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Cargo">
-        <PropertyRef Name="idCargo" />
-      </Principal>
-      <Dependent Role="Empleado">
-        <PropertyRef Name="cargo" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="Fk_EmpleadoSede">
-    <End Role="Sede" Type="Self.Sede" Multiplicity="0..1" />
-    <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+    <End Role="Sede" Type="PPAIModel.Store.Sede" Multiplicity="0..1" />
+    <End Role="Empleado" Type="PPAIModel.Store.Empleado" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Sede">
         <PropertyRef Name="idSede" />
@@ -356,8 +478,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="Fk_EmpleadoSexo">
-    <End Role="Sexos" Type="Self.Sexos" Multiplicity="0..1" />
-    <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+    <End Role="Sexos" Type="PPAIModel.Store.Sexos" Multiplicity="0..1" />
+    <End Role="Empleado" Type="PPAIModel.Store.Empleado" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Sexos">
         <PropertyRef Name="idSexo" />
@@ -367,9 +489,33 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="Fk_UsuarioEmpleado">
+    <End Role="Empleado" Type="PPAIModel.Store.Empleado" Multiplicity="0..1" />
+    <End Role="Usuario" Type="PPAIModel.Store.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="cuit" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="cuitEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_ReservaEscuela">
+    <End Role="Escuela" Type="PPAIModel.Store.Escuela" Multiplicity="0..1" />
+    <End Role="ReservaVisita" Type="PPAIModel.Store.ReservaVisita" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Escuela">
+        <PropertyRef Name="idEscuela" />
+      </Principal>
+      <Dependent Role="ReservaVisita">
+        <PropertyRef Name="idEscuela" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="Fk_ExpoPublico">
-    <End Role="PublicoDestino" Type="Self.PublicoDestino" Multiplicity="0..1" />
-    <End Role="Exposicion" Type="Self.Exposicion" Multiplicity="*" />
+    <End Role="PublicoDestino" Type="PPAIModel.Store.PublicoDestino" Multiplicity="0..1" />
+    <End Role="Exposicion" Type="PPAIModel.Store.Exposicion" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="PublicoDestino">
         <PropertyRef Name="idPublicoDestino" />
@@ -380,8 +526,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="Fk_ExpoSede">
-    <End Role="Sede" Type="Self.Sede" Multiplicity="1" />
-    <End Role="Exposicion" Type="Self.Exposicion" Multiplicity="*" />
+    <End Role="Sede" Type="PPAIModel.Store.Sede" Multiplicity="1" />
+    <End Role="Exposicion" Type="PPAIModel.Store.Exposicion" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Sede">
         <PropertyRef Name="idSede" />
@@ -392,8 +538,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_ExpoSedeExpo">
-    <End Role="Exposicion" Type="Self.Exposicion" Multiplicity="1" />
-    <End Role="ExposicionesXSede" Type="Self.ExposicionesXSede" Multiplicity="0..1" />
+    <End Role="Exposicion" Type="PPAIModel.Store.Exposicion" Multiplicity="1" />
+    <End Role="ExposicionesXSede" Type="PPAIModel.Store.ExposicionesXSede" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="Exposicion">
         <PropertyRef Name="idExposicion" />
@@ -406,8 +552,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="Fk_ExpoTipoExpo">
-    <End Role="TipoExposicion" Type="Self.TipoExposicion" Multiplicity="0..1" />
-    <End Role="Exposicion" Type="Self.Exposicion" Multiplicity="*" />
+    <End Role="TipoExposicion" Type="PPAIModel.Store.TipoExposicion" Multiplicity="0..1" />
+    <End Role="Exposicion" Type="PPAIModel.Store.Exposicion" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TipoExposicion">
         <PropertyRef Name="idTipoExposicion" />
@@ -417,33 +563,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="fk_horario">
-    <End Role="HORARIOS" Type="Self.HORARIOS" Multiplicity="1" />
-    <End Role="Horario_X_Empleado" Type="Self.Horario_X_Empleado" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="HORARIOS">
-        <PropertyRef Name="idHorario" />
-      </Principal>
-      <Dependent Role="Horario_X_Empleado">
-        <PropertyRef Name="idHorario" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="fk_horario_empleado">
-    <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
-    <End Role="Horario_X_Empleado" Type="Self.Horario_X_Empleado" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Empleado">
-        <PropertyRef Name="cuit" />
-      </Principal>
-      <Dependent Role="Horario_X_Empleado">
-        <PropertyRef Name="cuit" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="Fk_ObraExpoSede">
-    <End Role="Exposicion" Type="Self.Exposicion" Multiplicity="0..1" />
-    <End Role="Obra" Type="Self.Obra" Multiplicity="*" />
+    <End Role="Exposicion" Type="PPAIModel.Store.Exposicion" Multiplicity="0..1" />
+    <End Role="Obra" Type="PPAIModel.Store.Obra" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Exposicion">
         <PropertyRef Name="idExposicion" />
@@ -456,8 +578,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="Fk_ObraValuacion">
-    <End Role="Valuaciones" Type="Self.Valuaciones" Multiplicity="0..1" />
-    <End Role="Obra" Type="Self.Obra" Multiplicity="*" />
+    <End Role="Valuaciones" Type="PPAIModel.Store.Valuaciones" Multiplicity="0..1" />
+    <End Role="Obra" Type="PPAIModel.Store.Obra" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Valuaciones">
         <PropertyRef Name="idValuacion" />
@@ -467,45 +589,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="Fk_PublicoXExpo">
-    <End Role="PublicoDestino" Type="Self.PublicoDestino" Multiplicity="1" />
-    <End Role="PublicosXExposicion" Type="Self.PublicosXExposicion" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="PublicoDestino">
-        <PropertyRef Name="idPublicoDestino" />
-      </Principal>
-      <Dependent Role="PublicosXExposicion">
-        <PropertyRef Name="idPublicoDestino" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="Fk_ReservaEscuela">
-    <End Role="Escuela" Type="Self.Escuela" Multiplicity="0..1" />
-    <End Role="ReservaVisita" Type="Self.ReservaVisita" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Escuela">
-        <PropertyRef Name="idEscuela" />
-      </Principal>
-      <Dependent Role="ReservaVisita">
-        <PropertyRef Name="idEscuela" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="Fk_ReservaSede">
-    <End Role="Sede" Type="Self.Sede" Multiplicity="1" />
-    <End Role="ReservaVisita" Type="Self.ReservaVisita" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Sede">
-        <PropertyRef Name="idSede" />
-      </Principal>
-      <Dependent Role="ReservaVisita">
-        <PropertyRef Name="idSede" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="Fk_ReservaXSede">
-    <End Role="ReservaVisita" Type="Self.ReservaVisita" Multiplicity="1" />
-    <End Role="ReservasXSede" Type="Self.ReservasXSede" Multiplicity="0..1" />
+    <End Role="ReservaVisita" Type="PPAIModel.Store.ReservaVisita" Multiplicity="1" />
+    <End Role="ReservasXSede" Type="PPAIModel.Store.ReservasXSede" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="ReservaVisita">
         <PropertyRef Name="idReserva" />
@@ -517,9 +603,21 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="Fk_ReservaSede">
+    <End Role="Sede" Type="PPAIModel.Store.Sede" Multiplicity="1" />
+    <End Role="ReservaVisita" Type="PPAIModel.Store.ReservaVisita" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sede">
+        <PropertyRef Name="idSede" />
+      </Principal>
+      <Dependent Role="ReservaVisita">
+        <PropertyRef Name="idSede" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="Fk_SesionUsuario">
-    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
-    <End Role="Sesion" Type="Self.Sesion" Multiplicity="*" />
+    <End Role="Usuario" Type="PPAIModel.Store.Usuario" Multiplicity="1" />
+    <End Role="Sesion" Type="PPAIModel.Store.Sesion" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Usuario">
         <PropertyRef Name="idUsuario" />
@@ -529,152 +627,54 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="Fk_UsuarioEmpleado">
-    <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
-    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+  <Association Name="FK_Horario_X_Empleado_HORARIOS">
+    <End Role="HORARIOS" Type="PPAIModel.Store.HORARIOS" Multiplicity="1" />
+    <End Role="Horario_X_Empleado" Type="PPAIModel.Store.Horario_X_Empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HORARIOS">
+        <PropertyRef Name="idHorario" />
+      </Principal>
+      <Dependent Role="Horario_X_Empleado">
+        <PropertyRef Name="HORARIOS_idHorario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Horario_X_Empleado_Empleado">
+    <End Role="Horario_X_Empleado" Type="PPAIModel.Store.Horario_X_Empleado" Multiplicity="*" />
+    <End Role="Empleado" Type="PPAIModel.Store.Empleado" Multiplicity="1" />
     <ReferentialConstraint>
       <Principal Role="Empleado">
         <PropertyRef Name="cuit" />
       </Principal>
-      <Dependent Role="Usuario">
-        <PropertyRef Name="cuitEmpleado" />
+      <Dependent Role="Horario_X_Empleado">
+        <PropertyRef Name="Empleado_cuit" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="PK_PublicoXExp">
-    <End Role="Exposicion" Type="Self.Exposicion" Multiplicity="1" />
-    <End Role="PublicosXExposicion" Type="Self.PublicosXExposicion" Multiplicity="*" />
+  <Association Name="FK_PublicosXExposicion_PublicoDestino">
+    <End Role="PublicoDestino" Type="PPAIModel.Store.PublicoDestino" Multiplicity="1" />
+    <End Role="PublicosXExposicion" Type="PPAIModel.Store.PublicosXExposicion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PublicoDestino">
+        <PropertyRef Name="idPublicoDestino" />
+      </Principal>
+      <Dependent Role="PublicosXExposicion">
+        <PropertyRef Name="PublicoDestino2_idPublicoDestino" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PublicosXExposicion_Exposicion">
+    <End Role="PublicosXExposicion" Type="PPAIModel.Store.PublicosXExposicion" Multiplicity="*" />
+    <End Role="Exposicion" Type="PPAIModel.Store.Exposicion" Multiplicity="1" />
     <ReferentialConstraint>
       <Principal Role="Exposicion">
         <PropertyRef Name="idExposicion" />
         <PropertyRef Name="idSede" />
       </Principal>
       <Dependent Role="PublicosXExposicion">
-        <PropertyRef Name="idExposicion" />
-        <PropertyRef Name="idSede" />
+        <PropertyRef Name="Exposicion1_idExposicion" />
+        <PropertyRef Name="Exposicion1_idSede" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="PPAIModelStoreContainer">
-    <EntitySet Name="AsignacionVisita" EntityType="Self.AsignacionVisita" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="CambioEstado" EntityType="Self.CambioEstado" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Cargo" EntityType="Self.Cargo" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="DetalleExposicion" EntityType="Self.DetalleExposicion" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Escuela" EntityType="Self.Escuela" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Estado" EntityType="Self.Estado" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Exposicion" EntityType="Self.Exposicion" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="ExposicionesXSede" EntityType="Self.ExposicionesXSede" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Horario_X_Empleado" EntityType="Self.Horario_X_Empleado" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="HORARIOS" EntityType="Self.HORARIOS" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Obra" EntityType="Self.Obra" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="PublicoDestino" EntityType="Self.PublicoDestino" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="PublicosXExposicion" EntityType="Self.PublicosXExposicion" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="ReservasXSede" EntityType="Self.ReservasXSede" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="ReservaVisita" EntityType="Self.ReservaVisita" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Sede" EntityType="Self.Sede" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Sesion" EntityType="Self.Sesion" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Sexos" EntityType="Self.Sexos" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="TipoExposicion" EntityType="Self.TipoExposicion" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="TipoVisita" EntityType="Self.TipoVisita" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Valuaciones" EntityType="Self.Valuaciones" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__ReservaVisita__73BA3083" Association="Self.FK__ReservaVisita__73BA3083">
-      <End Role="CambioEstado" EntitySet="CambioEstado" />
-      <End Role="ReservaVisita" EntitySet="ReservaVisita" />
-    </AssociationSet>
-    <AssociationSet Name="Fk_AsignacionGuia" Association="Self.Fk_AsignacionGuia">
-      <End Role="Empleado" EntitySet="Empleado" />
-      <End Role="AsignacionVisita" EntitySet="AsignacionVisita" />
-    </AssociationSet>
-    <AssociationSet Name="Fk_AsignacionReSede" Association="Self.Fk_AsignacionReSede">
-      <End Role="ReservaVisita" EntitySet="ReservaVisita" />
-      <End Role="AsignacionVisita" EntitySet="AsignacionVisita" />
-    </AssociationSet>
-    <AssociationSet Name="Fk_CambioEst" Association="Self.Fk_CambioEst">
-      <End Role="Estado" EntitySet="Estado" />
-      <End Role="CambioEstado" EntitySet="CambioEstado" />
-    </AssociationSet>
-    <AssociationSet Name="Fk_DetalleExpObra" Association="Self.Fk_DetalleExpObra">
-      <End Role="Obra" EntitySet="Obra" />
-      <End Role="DetalleExposicion" EntitySet="DetalleExposicion" />
-    </AssociationSet>
-    <AssociationSet Name="FK_DetalleExpoSede" Association="Self.FK_DetalleExpoSede">
-      <End Role="Exposicion" EntitySet="Exposicion" />
-      <End Role="DetalleExposicion" EntitySet="DetalleExposicion" />
-    </AssociationSet>
-    <AssociationSet Name="Fk_EmpleadoCargo" Association="Self.Fk_EmpleadoCargo">
-      <End Role="Cargo" EntitySet="Cargo" />
-      <End Role="Empleado" EntitySet="Empleado" />
-    </AssociationSet>
-    <AssociationSet Name="Fk_EmpleadoSede" Association="Self.Fk_EmpleadoSede">
-      <End Role="Sede" EntitySet="Sede" />
-      <End Role="Empleado" EntitySet="Empleado" />
-    </AssociationSet>
-    <AssociationSet Name="Fk_EmpleadoSexo" Association="Self.Fk_EmpleadoSexo">
-      <End Role="Sexos" EntitySet="Sexos" />
-      <End Role="Empleado" EntitySet="Empleado" />
-    </AssociationSet>
-    <AssociationSet Name="Fk_ExpoPublico" Association="Self.Fk_ExpoPublico">
-      <End Role="PublicoDestino" EntitySet="PublicoDestino" />
-      <End Role="Exposicion" EntitySet="Exposicion" />
-    </AssociationSet>
-    <AssociationSet Name="Fk_ExpoSede" Association="Self.Fk_ExpoSede">
-      <End Role="Sede" EntitySet="Sede" />
-      <End Role="Exposicion" EntitySet="Exposicion" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ExpoSedeExpo" Association="Self.FK_ExpoSedeExpo">
-      <End Role="Exposicion" EntitySet="Exposicion" />
-      <End Role="ExposicionesXSede" EntitySet="ExposicionesXSede" />
-    </AssociationSet>
-    <AssociationSet Name="Fk_ExpoTipoExpo" Association="Self.Fk_ExpoTipoExpo">
-      <End Role="TipoExposicion" EntitySet="TipoExposicion" />
-      <End Role="Exposicion" EntitySet="Exposicion" />
-    </AssociationSet>
-    <AssociationSet Name="fk_horario" Association="Self.fk_horario">
-      <End Role="HORARIOS" EntitySet="HORARIOS" />
-      <End Role="Horario_X_Empleado" EntitySet="Horario_X_Empleado" />
-    </AssociationSet>
-    <AssociationSet Name="fk_horario_empleado" Association="Self.fk_horario_empleado">
-      <End Role="Empleado" EntitySet="Empleado" />
-      <End Role="Horario_X_Empleado" EntitySet="Horario_X_Empleado" />
-    </AssociationSet>
-    <AssociationSet Name="Fk_ObraExpoSede" Association="Self.Fk_ObraExpoSede">
-      <End Role="Exposicion" EntitySet="Exposicion" />
-      <End Role="Obra" EntitySet="Obra" />
-    </AssociationSet>
-    <AssociationSet Name="Fk_ObraValuacion" Association="Self.Fk_ObraValuacion">
-      <End Role="Valuaciones" EntitySet="Valuaciones" />
-      <End Role="Obra" EntitySet="Obra" />
-    </AssociationSet>
-    <AssociationSet Name="Fk_PublicoXExpo" Association="Self.Fk_PublicoXExpo">
-      <End Role="PublicoDestino" EntitySet="PublicoDestino" />
-      <End Role="PublicosXExposicion" EntitySet="PublicosXExposicion" />
-    </AssociationSet>
-    <AssociationSet Name="Fk_ReservaEscuela" Association="Self.Fk_ReservaEscuela">
-      <End Role="Escuela" EntitySet="Escuela" />
-      <End Role="ReservaVisita" EntitySet="ReservaVisita" />
-    </AssociationSet>
-    <AssociationSet Name="Fk_ReservaSede" Association="Self.Fk_ReservaSede">
-      <End Role="Sede" EntitySet="Sede" />
-      <End Role="ReservaVisita" EntitySet="ReservaVisita" />
-    </AssociationSet>
-    <AssociationSet Name="Fk_ReservaXSede" Association="Self.Fk_ReservaXSede">
-      <End Role="ReservaVisita" EntitySet="ReservaVisita" />
-      <End Role="ReservasXSede" EntitySet="ReservasXSede" />
-    </AssociationSet>
-    <AssociationSet Name="Fk_SesionUsuario" Association="Self.Fk_SesionUsuario">
-      <End Role="Usuario" EntitySet="Usuario" />
-      <End Role="Sesion" EntitySet="Sesion" />
-    </AssociationSet>
-    <AssociationSet Name="Fk_UsuarioEmpleado" Association="Self.Fk_UsuarioEmpleado">
-      <End Role="Empleado" EntitySet="Empleado" />
-      <End Role="Usuario" EntitySet="Usuario" />
-    </AssociationSet>
-    <AssociationSet Name="PK_PublicoXExp" Association="Self.PK_PublicoXExp">
-      <End Role="Exposicion" EntitySet="Exposicion" />
-      <End Role="PublicosXExposicion" EntitySet="PublicosXExposicion" />
-    </AssociationSet>
-  </EntityContainer>
 </Schema>

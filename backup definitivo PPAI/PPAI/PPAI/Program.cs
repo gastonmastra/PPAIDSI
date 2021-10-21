@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PPAI.Clases;
+using PPAI.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +18,7 @@ namespace PPAI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GestorRegistrarReservaVisitaGuiada());
+            Application.Run(new PantallaRegistrarVisita());
         }
     }
 }

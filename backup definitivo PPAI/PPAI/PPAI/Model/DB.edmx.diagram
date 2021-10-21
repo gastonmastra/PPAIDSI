@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="be81df8e98a24ccfabd0f93c8463f2de" Name="Diagram1">
+        <EntityTypeShape EntityType="PPAIModel.AsignacionVisita" Width="1.5" PointX="8.25" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PPAIModel.CambioEstado" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PPAIModel.Cargo" Width="1.5" PointX="0.75" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PPAIModel.DetalleExposicion" Width="1.5" PointX="11.25" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PPAIModel.Empleado" Width="1.5" PointX="3" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="PPAIModel.Escuela" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PPAIModel.Estado" Width="1.5" PointX="1.5" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="PPAIModel.Exposicion" Width="1.5" PointX="6" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PPAIModel.ExposicionesXSede" Width="1.5" PointX="8.25" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="PPAIModel.HORARIOS" Width="1.5" PointX="5.25" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="PPAIModel.Obra" Width="1.5" PointX="11.25" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PPAIModel.PublicoDestino" Width="1.5" PointX="8.25" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PPAIModel.ReservasXSede" Width="1.5" PointX="5.25" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PPAIModel.ReservaVisita" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PPAIModel.Sede" Width="1.5" PointX="0.75" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PPAIModel.Sesion" Width="1.5" PointX="7.5" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PPAIModel.Sexos" Width="1.5" PointX="0.75" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="PPAIModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PPAIModel.TipoExposicion" Width="1.5" PointX="3.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PPAIModel.TipoVisita" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PPAIModel.Usuario" Width="1.5" PointX="5.25" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PPAIModel.Valuaciones" Width="1.5" PointX="9" PointY="8.75" IsExpanded="true" />
+        <AssociationConnector Association="PPAIModel.Fk_AsignacionGuia" ManuallyRouted="false" />
+        <AssociationConnector Association="PPAIModel.Fk_AsignacionReSede" ManuallyRouted="false" />
+        <AssociationConnector Association="PPAIModel.FK__ReservaVisita__73BA3083" ManuallyRouted="false" />
+        <AssociationConnector Association="PPAIModel.Fk_CambioEst" ManuallyRouted="false" />
+        <AssociationConnector Association="PPAIModel.Fk_EmpleadoCargo" ManuallyRouted="false" />
+        <AssociationConnector Association="PPAIModel.Fk_DetalleExpObra" ManuallyRouted="false" />
+        <AssociationConnector Association="PPAIModel.FK_DetalleExpoSede" ManuallyRouted="false" />
+        <AssociationConnector Association="PPAIModel.Fk_EmpleadoSede" ManuallyRouted="false" />
+        <AssociationConnector Association="PPAIModel.Fk_EmpleadoSexo" ManuallyRouted="false" />
+        <AssociationConnector Association="PPAIModel.Fk_UsuarioEmpleado" ManuallyRouted="false" />
+        <AssociationConnector Association="PPAIModel.Fk_ReservaEscuela" ManuallyRouted="false" />
+        <AssociationConnector Association="PPAIModel.Fk_ExpoPublico" ManuallyRouted="false" />
+        <AssociationConnector Association="PPAIModel.Fk_ExpoSede" ManuallyRouted="false" />
+        <AssociationConnector Association="PPAIModel.FK_ExpoSedeExpo" ManuallyRouted="false" />
+        <AssociationConnector Association="PPAIModel.Fk_ExpoTipoExpo" ManuallyRouted="false" />
+        <AssociationConnector Association="PPAIModel.Fk_ObraExpoSede" ManuallyRouted="false" />
+        <AssociationConnector Association="PPAIModel.Fk_ObraValuacion" ManuallyRouted="false" />
+        <AssociationConnector Association="PPAIModel.Fk_ReservaXSede" ManuallyRouted="false" />
+        <AssociationConnector Association="PPAIModel.Fk_ReservaSede" ManuallyRouted="false" />
+        <AssociationConnector Association="PPAIModel.Fk_SesionUsuario" ManuallyRouted="false" />
+        <AssociationConnector Association="PPAIModel.Horario_X_Empleado" ManuallyRouted="false" />
+        <AssociationConnector Association="PPAIModel.PublicosXExposicion" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
