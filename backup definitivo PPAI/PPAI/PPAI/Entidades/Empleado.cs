@@ -77,10 +77,28 @@ namespace PPAI
             return null;
         }
 
-        public void trabajaDentroDiaYHorario()
+        public bool trabajaDentroDiaYHorario(DateTime fechaYHora)
         {
+            foreach (var horario in HORARIOS)
+            {
+                if (horario.trabajaDentroDiaYHorario(fechaYHora))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
-            //HORARIOS.trabajaDentroDeDiaYHorario();
+        public bool tieneAsignacionParaDiaYHora(DateTime fechaYHora, int duracion)
+        {
+            foreach (var asignacion in AsignacionVisita)
+            {
+                if (asignacion.getDatosFechaHora(fechaYHora, this, duracion))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

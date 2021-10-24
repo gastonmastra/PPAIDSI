@@ -77,7 +77,7 @@ namespace PPAI
         /// Carga la grilla de exposiciones con los datos.
         /// </summary>
         /// <param name="exposicionesTemporales">
-        /// Lista que contiene listas que contienen nombre,
+        /// Lista que contiene listas que contienen id, nombre,
         /// hsApertura, hsCierre, nombre publicos en ese orden
         /// </param>
         public void mostrarExposicionesTempVigentes(List<List<string>> exposicionesTemporales)
@@ -86,7 +86,7 @@ namespace PPAI
             {
                 var fila = new string[]
                 {
-                    expo[0], expo[1], expo[2], expo[3]
+                    expo[0], expo[1], expo[2], expo[3], expo[4]
                 };
                 grillaExposiciones.Rows.Add(fila);
             }     
@@ -100,7 +100,7 @@ namespace PPAI
             bs.DataSource = tiposVisita;
             cmbTipoVisita.DataSource = bs;
             cmbTipoVisita.DisplayMember = "nombre";
-            cmbTipoVisita.ValueMember = "idTipoVisita";
+            cmbTipoVisita.ValueMember = "nombre";
         }
 
         private void seleccionarTipoVisita(object sender, EventArgs e)
@@ -112,29 +112,67 @@ namespace PPAI
         private void seleccionarExposicionTemporal(object sender, EventArgs e)
         {
             List<string> lista = new List<string>();
-            foreach (string columna in grillaExposiciones.SelectedRows[0].Cells)
+            foreach (DataGridViewRow fila in grillaExposiciones.Rows)
             {
-                lista.Add(columna);
+                if (fila.Cells[5].Selected)
+                {
+                    foreach (DataGridViewCell valor in fila.Cells)
+                    {
+                        lista.Add(valor.Value.ToString());
+                    }
+                }  
             }
             gestorRegistrarVisita.tomarSeleccionExposicion(lista);
-            
         }
 
         public void solicitarFechaHoraReserva()
         {
-            throw new NotImplementedException();
+            
         }
-        public void ingresarFechaHoraReserva()
-        {
-
-        }
-
         private void ingresarFechaHoraReserva(object sender, EventArgs e)
         {
             var fecha = dateFechaReserva.Value;
             var hora = Convert.ToInt32(txtHoraReserva.Text);
+            string tipoVisitaSeleccionada = cmbTipoVisita.SelectedValue.ToString();            
+            gestorRegistrarVisita.tomarFechaHoraReserva(fecha, hora, tipoVisitaSeleccionada);
+        }
 
-            gestorRegistrarVisita.tomarFechaHoraReserva(fecha, hora);
+        public void mostrarGuiasDisponibles(List<Empleado> guiasDisponibles, int cantidadGuiasNecesarios)
+        {
+            grillaGuiasDisponibles2.Rows.Clear();
+            for (int i = 0; i < guiasDisponibles.Count; i++)
+            {
+                grillaGuiasDisponibles2.Rows.Add();
+                grillaGuiasDisponibles2.Rows[i].Cells[0].Value = guiasDisponibles[i].cuit.ToString();
+                grillaGuiasDisponibles2.Rows[i].Cells[1].Value = guiasDisponibles[i].nombre.ToString();
+                grillaGuiasDisponibles2.Rows[i].Cells[2].Value = guiasDisponibles[i].apellido.ToString();
+            }
+            lblCantGuiasNecesarios.Text = cantidadGuiasNecesarios.ToString();
+        }
+
+        private void seleccionarGuias(object sender, EventArgs e)
+        {
+            List<string> lista = new List<string>();
+            foreach (DataGridViewRow fila in grillaGuiasDisponibles2.Rows)
+            {
+                if (fila.Cells[3].Selected)
+                {
+                    foreach (DataGridViewCell valor in fila.Cells)
+                    {
+                        lista.Add(valor.Value.ToString());
+                    }
+                }
+            }
+            gestorRegistrarVisita.tomarSeleccionGuias(lista);
+        }
+
+        public void solicitarConfirmacion()
+        {
+        }
+
+        private void confirmar(object sender, EventArgs e)
+        {
+            gestorRegistrarVisita.tomarConfirmacion();
         }
     }
 }

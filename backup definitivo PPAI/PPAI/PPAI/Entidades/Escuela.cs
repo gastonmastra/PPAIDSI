@@ -40,5 +40,10 @@ namespace PPAI
         {
             return this;
         }
+
+        public int? getIdEscuela()
+        {
+            return idEscuela;
+        }
     }
 }

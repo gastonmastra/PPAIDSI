@@ -31,5 +31,15 @@ namespace PPAI
         {
 
         }
+
+        public bool trabajaDentroDiaYHorario(DateTime fechaYHora)
+        {
+            if (horaIngreso.Hours < fechaYHora.Hour && horaSalida.Hours > fechaYHora.Hour && diaSemana.ToString() == fechaYHora.DayOfWeek.ToString())
+            {
+                return true;
+            }
+            return false;
+        }
+    }
     }
 }

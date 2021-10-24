@@ -40,7 +40,7 @@
             this.cuit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreGuia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.apellidoGuia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.seleccionGuia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.grillaExposiciones = new System.Windows.Forms.DataGridView();
             this.idExpo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,6 +63,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.btnListo = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
+            this.btnSeleccionarGuias = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grillaGuiasDisponibles2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grillaExposiciones)).BeginInit();
             this.SuspendLayout();
@@ -71,7 +72,7 @@
             // 
             this.lblCantGuiasNecesarios.AutoSize = true;
             this.lblCantGuiasNecesarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantGuiasNecesarios.Location = new System.Drawing.Point(345, 495);
+            this.lblCantGuiasNecesarios.Location = new System.Drawing.Point(349, 584);
             this.lblCantGuiasNecesarios.Name = "lblCantGuiasNecesarios";
             this.lblCantGuiasNecesarios.Size = new System.Drawing.Size(38, 16);
             this.lblCantGuiasNecesarios.TabIndex = 45;
@@ -80,7 +81,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(256, 571);
+            this.btnCancelar.Location = new System.Drawing.Point(256, 603);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(159, 36);
             this.btnCancelar.TabIndex = 44;
@@ -90,18 +91,19 @@
             // btnConfirmar
             // 
             this.btnConfirmar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirmar.Location = new System.Drawing.Point(91, 571);
+            this.btnConfirmar.Location = new System.Drawing.Point(91, 603);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(159, 36);
             this.btnConfirmar.TabIndex = 43;
             this.btnConfirmar.Text = "Confirmar";
             this.btnConfirmar.UseVisualStyleBackColor = true;
+            this.btnConfirmar.Click += new System.EventHandler(this.confirmar);
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(154, 546);
+            this.label12.Location = new System.Drawing.Point(153, 584);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(190, 16);
             this.label12.TabIndex = 42;
@@ -154,7 +156,7 @@
             this.cuit,
             this.nombreGuia,
             this.apellidoGuia,
-            this.seleccionGuia});
+            this.seleccionar});
             this.grillaGuiasDisponibles2.Location = new System.Drawing.Point(64, 440);
             this.grillaGuiasDisponibles2.Name = "grillaGuiasDisponibles2";
             this.grillaGuiasDisponibles2.ReadOnly = true;
@@ -182,13 +184,12 @@
             this.apellidoGuia.Name = "apellidoGuia";
             this.apellidoGuia.ReadOnly = true;
             // 
-            // seleccionGuia
+            // seleccionar
             // 
-            this.seleccionGuia.HeaderText = "Haga Click";
-            this.seleccionGuia.Name = "seleccionGuia";
-            this.seleccionGuia.ReadOnly = true;
-            this.seleccionGuia.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.seleccionGuia.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.seleccionar.HeaderText = "";
+            this.seleccionar.Name = "seleccionar";
+            this.seleccionar.ReadOnly = true;
+            this.seleccionar.TrueValue = "Checked";
             // 
             // grillaExposiciones
             // 
@@ -206,7 +207,6 @@
             this.grillaExposiciones.Name = "grillaExposiciones";
             this.grillaExposiciones.Size = new System.Drawing.Size(470, 97);
             this.grillaExposiciones.TabIndex = 35;
-            this.grillaExposiciones.SelectionChanged += new System.EventHandler(this.seleccionarExposicionTemporal);
             // 
             // idExpo
             // 
@@ -400,11 +400,24 @@
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.ingresarFechaHoraReserva);
             // 
+            // btnSeleccionarGuias
+            // 
+            this.btnSeleccionarGuias.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSeleccionarGuias.Location = new System.Drawing.Point(184, 543);
+            this.btnSeleccionarGuias.Name = "btnSeleccionarGuias";
+            this.btnSeleccionarGuias.Size = new System.Drawing.Size(159, 36);
+            this.btnSeleccionarGuias.TabIndex = 55;
+            this.btnSeleccionarGuias.Text = "Listo";
+            this.btnSeleccionarGuias.UseVisualStyleBackColor = true;
+            this.btnSeleccionarGuias.Click += new System.EventHandler(this.seleccionarGuias);
+            // 
             // PantallaRegistrarVisita
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(520, 619);
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClientSize = new System.Drawing.Size(520, 651);
+            this.Controls.Add(this.btnSeleccionarGuias);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.btnListo);
             this.Controls.Add(this.button1);
@@ -431,6 +444,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lbl_RegistrarReserva);
             this.Name = "PantallaRegistrarVisita";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registrar Reserva de Visita Guiada";
             this.Load += new System.EventHandler(this.opcionRegistrarReserva);
             ((System.ComponentModel.ISupportInitialize)(this.grillaGuiasDisponibles2)).EndInit();
@@ -464,10 +478,6 @@
         private System.Windows.Forms.ComboBox cmbTipoVisita;
         private System.Windows.Forms.Button btn_buscarGuias;
         private System.Windows.Forms.TextBox txtHoraReserva;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cuit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombreGuia;
-        private System.Windows.Forms.DataGridViewTextBoxColumn apellidoGuia;
-        private System.Windows.Forms.DataGridViewTextBoxColumn seleccionGuia;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridViewTextBoxColumn idExpo;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
@@ -477,6 +487,11 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn seleccion;
         private System.Windows.Forms.Button btnListo;
         private System.Windows.Forms.Button btnAceptar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cuit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombreGuia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn apellidoGuia;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn seleccionar;
+        private System.Windows.Forms.Button btnSeleccionarGuias;
     }
 }
 

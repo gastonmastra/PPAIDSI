@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PPAI.Patron;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,17 +17,19 @@ namespace PPAI.Clases
         private Escuela escuelaSeleccionada;
         private List<List<string>> exposicionesTemporales;//mando los datos y no los objetos de tipo exposicion para cumplir con el diagrama de secuencia
         private List<Exposicion> exposicionesSeleccionadas;//Agregar al modelo
-        private TimeSpan duracionEstimada; //agregar al modelo
+        private int duracionEstimada; //agregar al modelo
         private DateTime fechaActual;
         private DateTime fechaYHoraReserva;
         private List<Empleado> guias;
-        private Empleado[] guiasSeleccionados;
+        private List<Empleado> guiasSeleccionados;
         private DateTime horaActual;
         private List<Sede> sedes;
         private Sede sedeSeleccionada;
         private List<TipoVisita> tiposVisita;
         private TipoVisita tipoVisitaSeleccionada;
         private int ultNroReserva;
+        private int cantidadGuiasNecesarios; //agregar al modelo
+        private Sesion sesion; //agregar al modelo
         private ContextoPPAI db = new ContextoPPAI();
 
         public GestorRegistrarVisita(PantallaRegistrarVisita pantalla)
@@ -92,9 +95,9 @@ namespace PPAI.Clases
             return sedeSeleccionada.buscarExposicionesTempVigentes();
         }
 
-        public List<Empleado> buscarGuiasDisponibles()
+        public List<Empleado> buscarGuiasDisponibles(DateTime fechaYHora, int duracion)
         {
-            return sedeSeleccionada.mostrarEmpleado();
+            return sedeSeleccionada.mostrarEmpleado(fechaYHora, duracion);
         }
         public List<Sede> buscarSedes()
         {
@@ -122,8 +125,9 @@ namespace PPAI.Clases
 
         public void tomarSeleccionExposicion(List<string> lista)
         {
-            var idExpo = lista[0];
-            Exposicion exposicion = db.Exposicion.Find(idExpo);
+            List<Exposicion> exposicionesSeleccionadas = new List<Exposicion>();
+            var idExpo = Convert.ToInt32(lista[0]);
+            Exposicion exposicion = db.Exposicion.Find(idExpo, sedeSeleccionada.idSede);
             exposicionesSeleccionadas.Add(exposicion);
             pantallaRegistrarVisita.solicitarFechaHoraReserva();
         }
@@ -132,11 +136,13 @@ namespace PPAI.Clases
         /// </summary>
         /// <param name="fecha"></param>
         /// <param name="hora"></param>
-        public void tomarFechaHoraReserva(DateTime fecha, int hora)
+        public void tomarFechaHoraReserva(DateTime fecha, int hora, string nombreTipoVisita)
         {
             var fechaYHora = fecha.AddHours(hora);
             fechaYHoraReserva = fechaYHora;
-            duracionEstimada = calcularDuracionEstimada();
+            IEstrategiaCalculoDuracion estrategia = crearEstrategia(nombreTipoVisita);
+            sedeSeleccionada.asignarEstrategiaCalculo(estrategia);
+            duracionEstimada = sedeSeleccionada.calcularDuracionEstimadaVisita(exposicionesSeleccionadas);
             try
             {
                 verificarCantidadMax();
@@ -149,10 +155,53 @@ namespace PPAI.Clases
             {
                 MessageBox.Show("Error inesperado", "Error", MessageBoxButtons.OK);
             }
-            guias = buscarGuiasDisponibles();
+            foreach (ReservaVisita reserva in db.ReservaVisita)
+            {
+                //AVERIGUAR QUE HACER ACA
+            }
+            guias = buscarGuiasDisponibles(fechaYHora, duracionEstimada);
+            if (guias.Count == 0)
+            {
+                MessageBox.Show("No se encontraron guias disponibles para la fecha y hora ingresada");
+                return;
+            }
+            else
+            {
+                cantidadGuiasNecesarios = calcularCantidadGuias();
+                pantallaRegistrarVisita.mostrarGuiasDisponibles(guias, cantidadGuiasNecesarios);
+            }
         }
 
-        private TimeSpan calcularDuracionEstimada()
+        public void tomarConfirmacion()
+        {
+            registrarReserva();
+        }
+
+        public void tomarSeleccionGuias(List<string> guiasDisponibles)
+        {
+            foreach (var guia in guiasDisponibles)
+            {
+                Empleado empleado = db.Empleado.Find(guia[0]);
+                guiasSeleccionados.Add(empleado);
+            }
+            pantallaRegistrarVisita.solicitarConfirmacion();
+        }
+
+        public IEstrategiaCalculoDuracion crearEstrategia(string nombre)
+        {
+            IEstrategiaCalculoDuracion est;
+
+            if (nombre == "Completa                 ")
+            {
+                est = new VisitaCompleta();
+            }
+            else
+            {
+                est = new VisitaPorExposicion();
+            }
+            return est;
+        }
+        private int calcularDuracionEstimada()
         {
             return sedeSeleccionada.calcularDuracionEstimadaVisita(exposicionesSeleccionadas);
         }
@@ -162,29 +211,38 @@ namespace PPAI.Clases
             throw new NotImplementedException();
             //return int.Parse(txtCantidadVisitantes.Text) / sedeSeleccionada.getCantMaxGuia();
         }
-        public ReservaVisita crearReservaVisita()
+        public ReservaVisita crearReservaVisita(DateTime fechaHoraCreacion, Estado estado)
         {
-            throw new NotImplementedException();
-            //ReservaVisita nueva = new ReservaVisita();
-            //nueva.Sede = sedeSeleccionada;
-            //nueva.cantidadAlumno = cantidadVisitantes;
-            //nueva.Escuela = escuelaSeleccionada;
-            //nueva.fechaHoraReserva = fechaReserva.AddHours(horaReserva);
-            //nueva.duracionEstimada = duracionReserva;
-            //nueva.fechaHoraCreacion = fechaHoraCreacion;
-            ////idReserva autogenerado...
-            //nueva.crearAsignacionVisita(empleado, fechaReserva.AddHours(horaReserva).AddHours((double)duracionReserva / 60), fechaReserva.AddHours(horaReserva), estadoPendiente);
-
-            //return nueva;
+            var fechaHoraFin = fechaYHoraReserva.AddHours((double)duracionEstimada / 60);
+            var fechaHoraInicio = fechaYHoraReserva;
+            ReservaVisita nueva = new ReservaVisita(guiasSeleccionados, fechaHoraFin, fechaHoraInicio, estado)
+            {
+                cantidadAlumno = cantVisitantes,
+                Sede = sedeSeleccionada,
+                Escuela = escuelaSeleccionada,
+                fechaHoraReserva = fechaHoraInicio,
+                duracionEstimada = duracionEstimada,
+                fechaHoraCreacion = fechaHoraCreacion,
+                cantidadAlumnoConfirmada = cantVisitantes,
+                idSede = sedeSeleccionada.getIdSede(),
+                idEscuela = escuelaSeleccionada.getIdEscuela(),
+            };
+            db.ReservaVisita.Add(nueva);
+            db.SaveChanges();
         }
         public void finCU()
         {
             //MessageBox.Show("Se ha realizado el registro de la reserva");
             //this.Close();
         }
-        public void generarNroReservaUnico()
+        public int generarNroReservaUnico()
         {
-            throw new NotImplementedException();
+            int numero = 0;
+            foreach (var reserva in db.ReservaVisita)
+            {
+                numero = reserva.getNroReserva();
+            }
+            return numero + 1;
         }
         public DateTime getDate()
         {
@@ -194,10 +252,26 @@ namespace PPAI.Clases
         {
             escuelas = buscarEscuelas();
             pantallaRegistrarVisita.mostrarNombresDeEscuelas(escuelas);
+            sesion = new Sesion() { fechaYHoraInicio = DateTime.Now, idUsuario = 1};
         }
         public void registrarReserva()
         {
-            throw new NotImplementedException();
+            int nroReserva = generarNroReservaUnico();
+            if (guiasSeleccionados.Count < cantidadGuiasNecesarios)
+            {
+                MessageBox.Show("La cantidad de guias seleccionados no es suficiente");
+                return;
+            }
+            else
+            {
+                empleadoSesion = buscarEmpleadoEnSesion(sesion);
+
+                DateTime fechaHoraCreacion = getDate();
+                Estado estadoPendiente = buscarEstadoPendienteDeConfirmacion();
+                crearReservaVisita(fechaHoraCreacion, estadoPendiente);
+                finCU();
+
+            }
         }
         public void tomarCantidadVisitantesIngresada(int cant)
         {

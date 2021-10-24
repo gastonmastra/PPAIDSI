@@ -19,5 +19,10 @@ namespace PPAI
         {
             return this;
         }
+
+        public string mostrarNombre()
+        {
+            return nombre;
+        }
     }
 }

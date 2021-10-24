@@ -32,5 +32,22 @@ namespace PPAI
         public virtual Empleado Empleado { get; set; }
 
         public virtual ReservaVisita ReservaVisita { get; set; }
+
+        public bool getDatosFechaHora(DateTime fechaYHora, Empleado guia, int duracionIngresada)
+        {
+            int duracion = duracionIngresada / 60;
+
+            if (guiaAsignado == guia.cuit &&
+                fechaYHora.Hour >= fechaHoraFin.Hour &&
+                (fechaYHora.Hour + duracion) <= fechaHoraInicio.Hour &&
+                fechaHoraInicio.Day == fechaYHora.Day &&
+                fechaHoraInicio.Month == fechaYHora.Month &&
+                fechaHoraInicio.Year == fechaYHora.Year)
+            {
+                return false;
+            }
+            return true;
+        }
+    }
     }
 }

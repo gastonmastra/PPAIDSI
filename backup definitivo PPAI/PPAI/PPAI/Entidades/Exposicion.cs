@@ -103,14 +103,23 @@ namespace PPAI
         /// Suma las duraciones de todos los detalles de una exposicion
         /// </summary>
         /// <returns></returns>
-        public TimeSpan calcularDuracionObrasExpuestas()
+        //public TimeSpan calcularDuracionObrasExpuestas()
+        //{
+        //    TimeSpan duracionExpo = new TimeSpan();
+        //    foreach (DetalleExposicion detalle in DetalleExposicion)
+        //    {
+        //        duracionExpo += detalle.buscarDuracionExtObra();
+        //    };
+        //    return duracionExpo;
+        //}
+        public int calcularDuracionObrasExpuestas()
         {
-            TimeSpan duracionExpo = new TimeSpan();
-            foreach (DetalleExposicion detalle in DetalleExposicion)
+            int duracionObras = 0;
+            foreach (var detalle in DetalleExposicion)
             {
-                duracionExpo += detalle.buscarDuracionExtObra();
-            };
-            return duracionExpo;
+                duracionObras += detalle.buscarDuracionExtObra();
+            }
+            return duracionObras;
         }
     }
 }

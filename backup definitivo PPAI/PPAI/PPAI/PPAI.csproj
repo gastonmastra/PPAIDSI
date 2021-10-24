@@ -75,6 +75,9 @@
     <Compile Include="Entidades\HORARIOS.cs" />
     <Compile Include="Entidades\ContextoPPAI.cs" />
     <Compile Include="Entidades\Obra.cs" />
+    <Compile Include="Patron\IEstrategiaCalculoDuracion.cs" />
+    <Compile Include="Patron\VisitaCompleta.cs" />
+    <Compile Include="Patron\VisitaPorExposicion.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entidades\PublicoDestino.cs" />

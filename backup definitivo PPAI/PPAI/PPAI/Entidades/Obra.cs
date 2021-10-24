@@ -35,11 +35,9 @@ namespace PPAI
 
         public int? peso { get; set; }
 
-        public TimeSpan mostrarDuracionExtendida()
+        public int mostrarDuracionExtendida()
         {
-            double dur = Convert.ToDouble(duracionExtenida);
-            TimeSpan duracionObra = TimeSpan.FromMinutes(dur);
-            return duracionObra;
+            return duracionExtenida.Value;
         }
 
         public int? valuacion { get; set; }

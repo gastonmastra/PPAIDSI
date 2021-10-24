@@ -1,5 +1,6 @@
 namespace PPAI
 {
+    using PPAI.Patron;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -36,6 +37,7 @@ namespace PPAI
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ReservaVisita> ReservaVisita { get; set; }
+        public IEstrategiaCalculoDuracion estrategia;
 
         public Sede getSede()
         {
@@ -81,31 +83,39 @@ namespace PPAI
         /// </summary>
         /// <param name="exposicionesSeleccionadas"></param>
         /// <returns></returns>
-        public TimeSpan calcularDuracionEstimadaVisita(List<Exposicion> exposicionesSeleccionadas)
+        public int calcularDuracionEstimadaVisita(List<Exposicion> exposicionesSeleccionadas)
         {
-            TimeSpan duracionTotal = new TimeSpan();
-            foreach (Exposicion expo in exposicionesSeleccionadas)
-            {
-                duracionTotal += expo.calcularDuracionObrasExpuestas();
-            }
-            return duracionTotal;
+            return estrategia.calcularDuracionEstimadaVisita(exposicionesSeleccionadas);
         }
 
-        public List<Empleado> mostrarEmpleado()
+        public List<Empleado> mostrarEmpleado(DateTime fechaYHora, int duracion)
         {
             List<Empleado> guias = new List<Empleado>();
-            foreach (Empleado empleado in Empleado) 
+            foreach (Empleado empleado in Empleado) //esto abarca el esDeSede 
             {
                 var emp = empleado.mostrarCargo();
                 if (emp != null)
                     guias.Add(empleado);
             };
             List<Empleado> guiasDisponibles = new List<Empleado>();
-            foreach (Empleado empleado1 in guias)
+            foreach (Empleado guia in guias)
             {
-
+                if (guia.trabajaDentroDiaYHorario(fechaYHora) && guia.tieneAsignacionParaDiaYHora(fechaYHora, duracion))
+                {
+                    guiasDisponibles.Add(guia);
+                }
             }
             return guias;
+        }
+
+        public void asignarEstrategiaCalculo(IEstrategiaCalculoDuracion estrategiaSeleccionada)
+        {
+            estrategia = estrategiaSeleccionada;
+        }
+
+        public int getIdSede()
+        {
+            return idSede;
         }
     }
 }

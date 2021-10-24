@@ -10,9 +10,14 @@ namespace PPAI
     public partial class ReservaVisita
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ReservaVisita()
+        public ReservaVisita(List<Empleado> guiasSeleccionados, DateTime fechaHoraFin, DateTime fechaHoraInicio, Estado estado)
         {
-            AsignacionVisita = new HashSet<AsignacionVisita>();
+            this.AsignacionVisita = new HashSet<AsignacionVisita>();
+            foreach (var empleado in guiasSeleccionados)
+            {
+                crearAsignacionVisita(guiasSeleccionados, fechaHoraFin, fechaHoraInicio, estado);
+            }
+            crearCambioEstado(estado);
         }
 
         public int? cantidadAlumno { get; set; }
@@ -55,6 +60,33 @@ namespace PPAI
 
         public virtual Sede Sede { get; set; }
 
+        public int getNroReserva()
+        {
+            return idReserva;
+        }
 
+        public void crearAsignacionVisita(List<Empleado> guiasSeleccionados, DateTime fechaHoraFin, DateTime fechaHoraInicio, Estado estado)
+        {
+            List<AsignacionVisita> coleccion = new List<AsignacionVisita>();
+            foreach (Empleado e in guiasSeleccionados)
+            {
+                AsignacionVisita nueva = new AsignacionVisita(){
+                    idSede = this.idSede, fechaHoraFin = fechaHoraFin, fechaHoraInicio = fechaHoraInicio, guiaAsignado = e.cuit, Empleado = e 
+                };
+                AsignacionVisita.Add(nueva);
+            };
+        }
+        private void crearCambioEstado(Estado estado)
+        {
+            CambioEstado cambioEstado = new CambioEstado()
+            {
+                fechaHoraInicio = DateTime.Now,
+                fechaHoraFin = null,
+                Estado = estado,
+                idEstado = estado.idEstado
+                //ordId autogenerado
+            };
+            CambioEstado = cambioEstado;
+        }
     }
 }
