@@ -69,7 +69,6 @@
     <Compile Include="Entidades\Horario_X_Empleado.cs" />
     <Compile Include="Entidades\Model1.cs" />
     <Compile Include="Entidades\Model2.cs" />
-    <Compile Include="Entidades\Model3.cs" />
     <Compile Include="Entidades\PublicosXExposicion.cs" />
     <Compile Include="Interfaces\PantallaRegistrarVisita.cs">
       <SubType>Form</SubType>

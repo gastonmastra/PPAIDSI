@@ -41,7 +41,16 @@ namespace PPAI.Clases
         {
             return sesionActual.buscarEmpleadoEnSesion();
         }
-
+        //los metodos de getGuias y getListaExpos los puse porque cuando por ejemplo 
+        // si se habia elegido una hora para la reserva y luego ponias en el boton
+        // para buscar guias y seleccionabas uno, si por alguna razon se te daba por cambiar la hora de 
+        //la reserva, para cuando eligieras otro guia la lista de guias seleccionados iba a tener los que seleccionaste antes, asique
+        // con estos metodos podemos limpiar la lista, equivale tambien para la de las exposiciones seleccionadas
+        
+        public List<Empleado> getGuias()
+        {
+            return guiasSeleccionados;
+        }
         public List<Exposicion> getListaExpos()
         {
             return exposicionesSeleccionadas;

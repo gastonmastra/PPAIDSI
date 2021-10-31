@@ -159,6 +159,16 @@ namespace PPAI
         }
         private void ingresarFechaHoraReserva(object sender, EventArgs e)
         {
+            
+            guias.Clear();
+            grillaGuiasDisponibles2.Rows.Clear();
+            grillaGuiasDisponibles2.Refresh();
+            List<Empleado> gui = gestorRegistrarVisita.getGuias();
+            gui.Clear();
+            btnConfirmar.Enabled = false;
+            btnSeleccionarGuias.Enabled = false;
+            
+            
             if (String.IsNullOrEmpty(txtHoraReserva.Text))
             {
                 MessageBox.Show("Por favor, ingrese una hora", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -272,6 +282,8 @@ namespace PPAI
 
         private void btn_buscarGuias_Click(object sender, EventArgs e)
         {
+            
+            
             gestorRegistrarVisita.buscarGuiasDisponibles();
             
         }
@@ -328,6 +340,7 @@ namespace PPAI
         private void cmbSede_SelectedIndexChanged(object sender, EventArgs e)
         {
             exposicionesSeleccionadas.Clear();
+            
             grillaExposiciones.Refresh();
             grillaExposiciones.Rows.Clear();
             List<Exposicion> expos = gestorRegistrarVisita.getListaExpos();

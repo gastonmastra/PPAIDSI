@@ -11,7 +11,7 @@ namespace PPAI.Entidades
             : base("name=Model2")
         {
         }
-
+        // tuve que agregar esto porque tenia problemas en el metodo para cuano busca las exposiciones temporales
         public virtual DbSet<PublicosXExposicion> PublicosXExposicion { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

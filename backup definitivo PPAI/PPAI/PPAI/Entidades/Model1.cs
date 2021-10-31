@@ -11,7 +11,8 @@ namespace PPAI.Entidades
             : base("name=Model1")
         {
         }
-
+        // tuve que agregar esto porque tenia problemas en el metodo de cuando se ejecutaba el metodo de trabajaDentroDiaYHorario de empleado
+        // 
         public virtual DbSet<Horario_X_Empleado> Horario_X_Empleado { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
