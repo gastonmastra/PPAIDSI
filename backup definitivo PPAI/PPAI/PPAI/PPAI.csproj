@@ -7,7 +7,7 @@
     <ProjectGuid>{8C7E0FD6-632C-4C16-A875-6E0C6210E860}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>PPAI</RootNamespace>
-    <AssemblyName>PPAI</AssemblyName>
+    <AssemblyName>ur</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,6 +42,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
@@ -55,97 +56,48 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AsignacionVisita.cs">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BD.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BD.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BD.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BD.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BD.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="CambioEstado.cs">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Cargo.cs">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DetalleExposicion.cs">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Empleado.cs">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Escuela.cs">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Estado.cs">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Exposicion.cs">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ExposicionesXSede.cs">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="GestorRegistrarReservaVisitaGuiada.cs">
+    <Compile Include="Controladores\GestorRegistrarVisita.cs" />
+    <Compile Include="Entidades\AsignacionVisita.cs" />
+    <Compile Include="Entidades\CambioEstado.cs" />
+    <Compile Include="Entidades\Cargo.cs" />
+    <Compile Include="Entidades\DetalleExposicion.cs" />
+    <Compile Include="Entidades\Empleado.cs" />
+    <Compile Include="Entidades\Escuela.cs" />
+    <Compile Include="Entidades\Estado.cs" />
+    <Compile Include="Entidades\Exposicion.cs" />
+    <Compile Include="Entidades\ExposicionesXSede.cs" />
+    <Compile Include="Entidades\Horario_X_Empleado.cs" />
+    <Compile Include="Entidades\Model1.cs" />
+    <Compile Include="Entidades\Model2.cs" />
+    <Compile Include="Entidades\Model3.cs" />
+    <Compile Include="Entidades\PublicosXExposicion.cs" />
+    <Compile Include="Interfaces\PantallaRegistrarVisita.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GestorRegistrarReservaVisitaGuiada.Designer.cs">
-      <DependentUpon>GestorRegistrarReservaVisitaGuiada.cs</DependentUpon>
+    <Compile Include="Interfaces\PantallaRegistrarVisita.Designer.cs">
+      <DependentUpon>PantallaRegistrarVisita.cs</DependentUpon>
     </Compile>
-    <Compile Include="HORARIOS.cs">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Obra.cs">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Entidades\HORARIOS.cs" />
+    <Compile Include="Entidades\ContextoPPAI.cs" />
+    <Compile Include="Entidades\Obra.cs" />
+    <Compile Include="Patron\IEstrategiaCalculoDuracion.cs" />
+    <Compile Include="Patron\VisitaCompleta.cs" />
+    <Compile Include="Patron\VisitaPorExposicion.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PublicoDestino.cs">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ReservasXSede.cs">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ReservaVisita.cs">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Sede.cs">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Sesion.cs">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Sexos.cs">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagrams.cs">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TipoExposicion.cs">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TipoVisita.cs">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Usuario.cs">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Valuaciones.cs">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="GestorRegistrarReservaVisitaGuiada.resx">
-      <DependentUpon>GestorRegistrarReservaVisitaGuiada.cs</DependentUpon>
+    <Compile Include="Entidades\PublicoDestino.cs" />
+    <Compile Include="Entidades\ReservasXSede.cs" />
+    <Compile Include="Entidades\ReservaVisita.cs" />
+    <Compile Include="Entidades\Sede.cs" />
+    <Compile Include="Entidades\Sesion.cs" />
+    <Compile Include="Entidades\Sexos.cs" />
+    <Compile Include="Entidades\sysdiagrams.cs" />
+    <Compile Include="Entidades\TipoExposicion.cs" />
+    <Compile Include="Entidades\TipoVisita.cs" />
+    <Compile Include="Entidades\Usuario.cs" />
+    <Compile Include="Entidades\Valuaciones.cs" />
+    <EmbeddedResource Include="Interfaces\PantallaRegistrarVisita.resx">
+      <DependentUpon>PantallaRegistrarVisita.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -156,13 +108,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EntityDeploy Include="BD.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BD.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="BD.edmx.diagram">
-      <DependentUpon>BD.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -181,16 +126,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="BD.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BD.edmx</DependentUpon>
-      <LastGenOutput>BD.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="BD.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BD.edmx</DependentUpon>
-      <LastGenOutput>BD.cs</LastGenOutput>
-    </Content>
+    <Folder Include="resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
