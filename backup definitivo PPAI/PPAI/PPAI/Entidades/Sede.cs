@@ -144,7 +144,7 @@ namespace PPAI
                     guiasDisponibles.Add(guia);
                 }
             }
-            return guias;
+            return guiasDisponibles;
         }
 
         public void asignarEstrategiaCalculo(IEstrategiaCalculoDuracion estrategiaSeleccionada)
@@ -157,7 +157,7 @@ namespace PPAI
             return idSede;
         }
 
-        public int getCantMaxGuia()
+        public double getCantMaxGuia()
         {
             return cantMaxPorGuia;
         }

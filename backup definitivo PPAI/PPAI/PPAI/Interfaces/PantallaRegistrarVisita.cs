@@ -172,7 +172,7 @@ namespace PPAI
             }
         }
 
-        public void mostrarGuiasDisponibles(List<Empleado> guiasDisponibles, int cantidadGuiasNecesarios)
+        public void mostrarGuiasDisponibles(List<Empleado> guiasDisponibles, double cantidadGuiasNecesarios)
         {
             grillaGuiasDisponibles.Rows.Clear();
             for (int i = 0; i < guiasDisponibles.Count; i++)
@@ -182,7 +182,7 @@ namespace PPAI
                 grillaGuiasDisponibles.Rows[i].Cells[1].Value = guiasDisponibles[i].nombre.ToString();
                 grillaGuiasDisponibles.Rows[i].Cells[2].Value = guiasDisponibles[i].apellido.ToString();
             }
-            lblCantGuiasNecesarios.Text = cantidadGuiasNecesarios.ToString();
+            lblCantidadGuiasNecesarios.Text = "Cantidad de guias necesarios: " + cantidadGuiasNecesarios.ToString();
             btnAgregarGuias.Enabled = true;
         }
 
@@ -248,7 +248,6 @@ namespace PPAI
 
             txtCantidadVisitantes.Text = "";
             txtHoraReserva.Text = "";                
-            lblCantGuiasNecesarios.Text = "";
         }
     }
 }

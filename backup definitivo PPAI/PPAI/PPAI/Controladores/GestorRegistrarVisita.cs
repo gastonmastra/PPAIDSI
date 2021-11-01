@@ -28,7 +28,7 @@ namespace PPAI.Clases
         private List<TipoVisita> tiposVisita;
         private string tipoVisitaSeleccionada;
         private int ultNroReserva;
-        private int cantidadGuiasNecesarios;
+        private double cantidadGuiasNecesarios;
         private Sesion sesion;
         public ContextoPPAI db = new ContextoPPAI();
 
@@ -228,16 +228,17 @@ namespace PPAI.Clases
             return est;
         }
 
-        public int calcularCantidadGuias()
+        public double calcularCantidadGuias()
         {
-            int cantMaxGuia = sedeSeleccionada.getCantMaxGuia();
+            double cantMaxGuia = sedeSeleccionada.getCantMaxGuia();
             if (cantVisitantes < cantMaxGuia)
             {
                 return 1;
             }
             else 
             {
-                return (cantVisitantes) / sedeSeleccionada.getCantMaxGuia();
+                double cant = Math.Ceiling(cantVisitantes / cantMaxGuia);
+                return cant;
             }
             
         }
@@ -256,7 +257,6 @@ namespace PPAI.Clases
                 cantidadAlumnoConfirmada = cantVisitantes,
                 idSede = sedeSeleccionada.getIdSede(),
                 idEscuela = escuelaSeleccionada.getIdEscuela(),
-            
             };
             db.ReservaVisita.Add(nueva);
             db.SaveChanges();
