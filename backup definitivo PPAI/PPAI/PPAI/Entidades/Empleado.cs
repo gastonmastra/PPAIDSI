@@ -15,7 +15,7 @@ namespace PPAI
         {
             AsignacionVisita = new HashSet<AsignacionVisita>();
             Usuario = new HashSet<Usuario>();
-            HORARIOS = new HashSet<HORARIOS>();
+            Horarios = new HashSet<HORARIOS>();
         }
 
         [StringLength(10)]
@@ -24,10 +24,7 @@ namespace PPAI
         public int? codigoValuacion { get; set; }
 
         [Key]
-        [StringLength(20)]
-
-         public string cuit { get; set; }
-        
+        public int cuit { get; set; }
 
         public int? dni { get; set; }
 
@@ -56,22 +53,18 @@ namespace PPAI
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AsignacionVisita> AsignacionVisita { get; set; }
 
-        public virtual Cargo Cargo1 { get; set; }
+        public virtual Cargo Cargo { get; set; }
 
         public virtual Sede Sede { get; set; }
 
-        public virtual Sexos Sexos { get; set; }
+        public virtual Sexos Sexo { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Usuario> Usuario { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
        [ForeignKey("idHorario")]
-        public virtual ICollection<HORARIOS> HORARIOS { get; set; }
-
-        
-
-
+        public virtual ICollection<HORARIOS> Horarios { get; set; }
 
         public Empleado getEmpleado()
         {
@@ -80,14 +73,14 @@ namespace PPAI
 
         public Empleado mostrarCargo()
         {
-            if (Cargo1.esGuia())
+            if (Cargo.esGuia())
                 return this;
             return null;
         }
 
         public bool trabajaDentroDiaYHorario(DateTime fechaYHora)
         {
-            foreach (var horario in HORARIOS)
+            foreach (var horario in Horarios)
             {
                 if (horario.trabajaDentroDiaYHorario(fechaYHora))
                 {
@@ -97,7 +90,7 @@ namespace PPAI
             return false;
         }
 
-        public bool tieneAsignacionParaDiaYHora(DateTime fechaYHora, int duracion)
+        public bool tieneAsignacionParaDiaYHora(DateTime fechaYHora, double duracion)
         {
             foreach (var asignacion in AsignacionVisita)
             {

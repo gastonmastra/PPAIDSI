@@ -12,8 +12,7 @@ namespace PPAI
         public DateTime fechaHoraFin { get; set; }
 
         [Required]
-        [StringLength(20)]
-        public string guiaAsignado { get; set; }
+        public int guiaAsignado { get; set; }
 
         [Key]
         [Column(Order = 0)]
@@ -33,9 +32,9 @@ namespace PPAI
 
         public virtual ReservaVisita ReservaVisita { get; set; }
 
-        public bool getDatosFechaHora(DateTime fechaYHora, Empleado guia, int duracionIngresada)
+        public bool getDatosFechaHora(DateTime fechaYHora, Empleado guia, double duracionIngresada)
         {
-            int duracion = duracionIngresada / 60;
+            double duracion = duracionIngresada / 60;
 
             if (guiaAsignado == guia.cuit &&
                 fechaYHora.Hour >= fechaHoraFin.Hour &&
@@ -49,5 +48,4 @@ namespace PPAI
             return true;
         }
     }
-    }
-
+}

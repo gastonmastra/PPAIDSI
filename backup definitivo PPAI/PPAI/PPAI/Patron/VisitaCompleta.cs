@@ -8,9 +8,9 @@ namespace PPAI.Patron
 {
     class VisitaCompleta : IEstrategiaCalculoDuracion
     {
-        public int calcularDuracionEstimadaVisita(List<Exposicion> exposicionesSelecc)
+        public double calcularDuracionEstimadaVisita(List<Exposicion> exposicionesSelecc)
         {
-            int duracion = 0;
+            double duracion = 0;
             foreach (Exposicion expo in exposicionesSelecc)
             {
                 duracion += expo.calcularDuracionObrasExpuestas();

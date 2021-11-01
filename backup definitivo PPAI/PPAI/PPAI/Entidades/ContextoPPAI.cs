@@ -37,10 +37,6 @@ namespace PPAI
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<AsignacionVisita>()
-                .Property(e => e.guiaAsignado)
-                .IsUnicode(false);
-
             modelBuilder.Entity<CambioEstado>()
                 .HasMany(e => e.ReservaVisita)
                 .WithOptional(e => e.CambioEstado)
@@ -56,7 +52,7 @@ namespace PPAI
 
             modelBuilder.Entity<Cargo>()
                 .HasMany(e => e.Empleado)
-                .WithOptional(e => e.Cargo1)
+                .WithOptional(e => e.Cargo)
                 .HasForeignKey(e => e.cargo);
 
             modelBuilder.Entity<DetalleExposicion>()
@@ -66,10 +62,6 @@ namespace PPAI
             modelBuilder.Entity<Empleado>()
                 .Property(e => e.apellido)
                 .IsFixedLength();
-
-            modelBuilder.Entity<Empleado>()
-                .Property(e => e.cuit)
-                .IsUnicode(false);
 
             modelBuilder.Entity<Empleado>()
                 .Property(e => e.calle)
@@ -91,11 +83,11 @@ namespace PPAI
 
             modelBuilder.Entity<Empleado>()
                 .HasMany(e => e.Usuario)
-                .WithOptional(e => e.Empleado)
+                .WithRequired(e => e.Empleado)
                 .HasForeignKey(e => e.cuitEmpleado);
 
             modelBuilder.Entity<Empleado>()
-                 .HasMany(e => e.HORARIOS)
+                 .HasMany(e => e.Horarios)
                  .WithMany(e => e.Empleado)
                  .Map(m => m.ToTable("Horario_X_Empleado").MapLeftKey("cuit").MapRightKey("idHorario"));
 
@@ -151,8 +143,6 @@ namespace PPAI
             modelBuilder.Entity<HORARIOS>()
                 .Property(e => e.diaSemana)
                 .IsUnicode(false);
-           
-                
 
             modelBuilder.Entity<Obra>()
                 .Property(e => e.descripcion)
@@ -223,10 +213,6 @@ namespace PPAI
             modelBuilder.Entity<Usuario>()
                 .Property(e => e.nombre)
                 .IsFixedLength();
-
-            modelBuilder.Entity<Usuario>()
-                .Property(e => e.cuitEmpleado)
-                .IsUnicode(false);
 
             modelBuilder.Entity<Usuario>()
                 .HasMany(e => e.Sesion)

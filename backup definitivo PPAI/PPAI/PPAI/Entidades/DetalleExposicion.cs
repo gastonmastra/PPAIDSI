@@ -31,7 +31,7 @@ namespace PPAI
 
         public virtual Exposicion Exposicion { get; set; }
 
-        public int buscarDuracionExtObra()
+        public double buscarDuracionExtObra()
         {
             return Obra.mostrarDuracionExtendida();
         }

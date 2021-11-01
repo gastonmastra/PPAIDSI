@@ -35,7 +35,7 @@ namespace PPAI
 
         public int? peso { get; set; }
 
-        public int mostrarDuracionExtendida()
+        public double mostrarDuracionExtendida()
         {
             return duracionExtenida.Value;
         }

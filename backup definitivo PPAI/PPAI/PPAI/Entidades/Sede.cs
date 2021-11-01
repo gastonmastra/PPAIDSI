@@ -62,57 +62,57 @@ namespace PPAI
                     // usar este si se quiere mostrar una exposicion por publico
                     // por ejemplo para la exposicion N tiene 2 tipos de publicos, mostraria 2 filas
                     // una exposicion n con publico 1 y otra exposicion n con publico 2
-                    List<string> publicos = expo.buscarExposicionesTemporales();
-                    if (publicos.Count != 0)
-                    {
-                        //string id = "";
-                        //string nombre = "";
-                        //string hsApertura = "";
-                        //string hsCierre = "";
-                        //string soloPublicos = "";
-                        //for (int i = 0; i < publicos.Count; i++)
-                        //{}
-                        string id = (expo.idExposicion).ToString();
-                        string nombre = (expo.nombre).ToString();
-                        string hsApertura = expo.mostrarHorarioApertura();
-                        string hsCierre = expo.mostrarHorarioCierre();
-                        string soloPublicos = "";
-                        
-
-                        for (int e = 0; e < publicos.Count; e++)
-                        {
-                            soloPublicos = publicos[e];
-                            List<string> array = new List<string>
-                        {
-                            id, nombre, hsApertura, hsCierre, soloPublicos
-                        };
-                            exposicionesTemporalesVigentes.Add(array);
-                        };
-                    }
-                    // usar este si se quiere mostrar el publico de una exposicion todos junto, 
-                    // por ejemplo para la exposicion N su publico destino se mostraria como "Mayores/Menores/ ..."
                     //List<string> publicos = expo.buscarExposicionesTemporales();
                     //if (publicos.Count != 0)
                     //{
-                    //    for (int i = 0; i < publicos.Count; i++)
-                    //    {
-                    //        string id = (expo.idExposicion).ToString();
-                    //        string nombre = (expo.nombre).ToString();
-                    //        string hsApertura = expo.mostrarHorarioApertura();
-                    //        string hsCierre = expo.mostrarHorarioCierre();
-                    //        string soloPublicos = "";
+                    //    //string id = "";
+                    //    //string nombre = "";
+                    //    //string hsApertura = "";
+                    //    //string hsCierre = "";
+                    //    //string soloPublicos = "";
+                    //    //for (int i = 0; i < publicos.Count; i++)
+                    //    //{}
+                    //    string id = (expo.mostrarId()).ToString();
+                    //    string nombre = (expo.mostrarNombre());
+                    //    string hsApertura = expo.mostrarHorarioApertura();
+                    //    string hsCierre = expo.mostrarHorarioCierre();
+                    //    string soloPublicos = "";
 
-                    //        for (int e = 0; e < publicos.Count; e++)
-                    //        {
-                    //            soloPublicos += publicos[e] + " / ";
-                    //        };
+
+                    //    for (int e = 0; e < publicos.Count; e++)
+                    //    {
+                    //        soloPublicos = publicos[e];
                     //        List<string> array = new List<string>
                     //    {
                     //        id, nombre, hsApertura, hsCierre, soloPublicos
                     //    };
                     //        exposicionesTemporalesVigentes.Add(array);
-                    //    }
+                    //    };
                     //}
+                    // usar este si se quiere mostrar el publico de una exposicion todos junto, 
+                    // por ejemplo para la exposicion N su publico destino se mostraria como "Mayores/Menores/ ..."
+                    List<string> publicos = expo.buscarExposicionesTemporales();
+                    if (publicos.Count != 0)
+                    {
+                        for (int i = 0; i < publicos.Count; i++)
+                        {
+                            string id = (expo.idExposicion).ToString();
+                            string nombre = (expo.nombre).ToString();
+                            string hsApertura = expo.mostrarHorarioApertura();
+                            string hsCierre = expo.mostrarHorarioCierre();
+                            string soloPublicos = "";
+
+                            for (int e = 0; e < publicos.Count; e++)
+                            {
+                                soloPublicos += publicos[e] + " / ";
+                            };
+                            List<string> array = new List<string>
+                        {
+                            id, nombre, hsApertura, hsCierre, soloPublicos
+                        };
+                            exposicionesTemporalesVigentes.Add(array);
+                        }
+                    }
                 }
             }
             return exposicionesTemporalesVigentes;
@@ -122,12 +122,12 @@ namespace PPAI
         /// </summary>
         /// <param name="exposicionesSeleccionadas"></param>
         /// <returns></returns>
-        public int calcularDuracionEstimadaVisita(List<Exposicion> exposicionesSeleccionadas)
+        public double calcularDuracionEstimadaVisita(List<Exposicion> exposicionesSeleccionadas)
         {
             return estrategia.calcularDuracionEstimadaVisita(exposicionesSeleccionadas);
         }
 
-        public List<Empleado> mostrarEmpleado(DateTime fechaYHora, int duracion)
+        public List<Empleado> mostrarEmpleado(DateTime fechaYHora, double duracion)
         {
             List<Empleado> guias = new List<Empleado>();
             foreach (Empleado empleado in Empleado) //esto abarca el esDeSede 

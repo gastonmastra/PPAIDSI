@@ -15,8 +15,6 @@ namespace PPAI
     public partial class PantallaRegistrarVisita : Form
     {
         private GestorRegistrarVisita gestorRegistrarVisita;
-        private List<int> exposicionesSeleccionadas = new List<int>();
-        private List<string> guias = new List<string>();
 
         public PantallaRegistrarVisita()
         {
@@ -34,15 +32,6 @@ namespace PPAI
             //grillaGuiasDisponibles2.AutoResizeColumns(DataGridViewAutoSizeColumnsMo‌​de.AllCells);
 
             gestorRegistrarVisita.opcionRegistrarReserva();
-            cmbEscuelas.SelectedIndex = -1;
-            cmbTipoVisita.SelectedIndex = -1;
-            cmbSede.SelectedIndex = -1;
-            btnListo.Enabled = false;
-            btnAceptar.Enabled = false;
-            btnSeleccionarGuias.Enabled = false;
-            btn_buscarGuias.Enabled = false;
-            btnConfirmar.Enabled = false;
-
         }
 
         private void habilitarPantalla()
@@ -61,8 +50,6 @@ namespace PPAI
 
         private void seleccionarEscuela(object sender, EventArgs e)
         {
-            cmbTipoVisita.SelectedIndex = -1;
-            cmbSede.SelectedIndex = -1;
             Escuela escuela = (Escuela)cmbEscuelas.SelectedItem;
             gestorRegistrarVisita.tomarSeleccionEscuela(escuela);
         }
@@ -71,13 +58,12 @@ namespace PPAI
         /// </summary>
         public void solicitarCantidadVisitantes()
         {
-            
+            txtCantidadVisitantes.Enabled = true;
+            btnCantidadVisitantes.Enabled = true;
         }
 
         private void ingresarCantidadVisitantes(object sender, EventArgs e)
         {
-            // cmbSede.SelectedIndex = -1;
-
             if (txtCantidadVisitantes.Text == "")
             {
                 MessageBox.Show("Por favor, ingrese la cantidad de visitantes", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -89,11 +75,10 @@ namespace PPAI
                 gestorRegistrarVisita.tomarCantidadVisitantesIngresada(cant);
                 seleccionarEscuela(sender, e);
             }
-            
-            
         }
         public void mostrarNombreSede(List<Sede> sedes)
         {
+            cmbSede.Enabled = true;
             BindingSource bs = new BindingSource();
             bs.DataSource = sedes;
             cmbSede.DataSource = bs;
@@ -115,6 +100,7 @@ namespace PPAI
         /// </param>
         public void mostrarExposicionesTempVigentes(List<List<string>> exposicionesTemporales)
         {
+            btnAgregarExposiciones.Enabled = true;
             foreach (var expo in exposicionesTemporales)
             {
                 var fila = new string[]
@@ -129,6 +115,7 @@ namespace PPAI
         /// </summary>
         public void solicitarSeleccionTipoVisita(List<TipoVisita> tiposVisita)
         {
+            cmbTipoVisita.Enabled = true;
             BindingSource bs = new BindingSource();
             bs.DataSource = tiposVisita;
             cmbTipoVisita.DataSource = bs;
@@ -139,36 +126,38 @@ namespace PPAI
 
         private void seleccionarTipoVisita(object sender, EventArgs e)
         {
-           
             grillaExposiciones.Rows.Clear();
             grillaExposiciones.Refresh();
-            TipoVisita tipoVisita = (TipoVisita)cmbTipoVisita.SelectedItem;
+            string tipoVisita = cmbTipoVisita.SelectedItem.ToString();
             gestorRegistrarVisita.tomarSeleccionTipoVisita(tipoVisita);
-            
         }
 
         private void seleccionarExposicionTemporal(object sender, EventArgs e)
         {
-            gestorRegistrarVisita.tomarSeleccionExposicion(exposicionesSeleccionadas);
-            btnAceptar.Enabled = true;
+            List<int> idExpos = new List<int>();
+            foreach (DataGridViewRow fila in grillaExposiciones.Rows)
+            {
+                string esChecked = (string)fila.Cells[5].Value;
+                if (esChecked == "Checked")
+                {
+                    int idExpo = Convert.ToInt32(fila.Cells[0].Value);
+                    idExpos.Add(idExpo);
+                }
+            }
+            if (idExpos.Count == 0)
+                MessageBox.Show("Seleccionar alguna exposicion", "Information", MessageBoxButtons.OK);
+            gestorRegistrarVisita.tomarSeleccionExposicion(idExpos);
+            btnFechaHoraReserva.Enabled = true;
         }
 
         public void solicitarFechaHoraReserva()
         {
-            
+            dateFechaReserva.Enabled = true;
+            txtHoraReserva.Enabled = true;
+            btnFechaHoraReserva.Enabled = true;
         }
         private void ingresarFechaHoraReserva(object sender, EventArgs e)
-        {
-            
-            guias.Clear();
-            grillaGuiasDisponibles2.Rows.Clear();
-            grillaGuiasDisponibles2.Refresh();
-            List<Empleado> gui = gestorRegistrarVisita.getGuias();
-            gui.Clear();
-            btnConfirmar.Enabled = false;
-            btnSeleccionarGuias.Enabled = false;
-            
-            
+        {           
             if (String.IsNullOrEmpty(txtHoraReserva.Text))
             {
                 MessageBox.Show("Por favor, ingrese una hora", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -180,50 +169,47 @@ namespace PPAI
                 var hora = Convert.ToInt32(txtHoraReserva.Text);
                 string tipoVisitaSeleccionada = cmbTipoVisita.SelectedValue.ToString();
                 gestorRegistrarVisita.tomarFechaHoraReserva(fecha, hora, tipoVisitaSeleccionada);
-                if (gestorRegistrarVisita.verificarReservasSede())
-                {
-                    btn_buscarGuias.Enabled = true;
-                }
-                else
-                {
-                    btn_buscarGuias.Enabled = false;
-                }
             }
         }
 
         public void mostrarGuiasDisponibles(List<Empleado> guiasDisponibles, int cantidadGuiasNecesarios)
         {
-            grillaGuiasDisponibles2.Rows.Clear();
+            grillaGuiasDisponibles.Rows.Clear();
             for (int i = 0; i < guiasDisponibles.Count; i++)
             {
-                grillaGuiasDisponibles2.Rows.Add();
-                grillaGuiasDisponibles2.Rows[i].Cells[0].Value = guiasDisponibles[i].cuit.ToString();
-                grillaGuiasDisponibles2.Rows[i].Cells[1].Value = guiasDisponibles[i].nombre.ToString();
-                grillaGuiasDisponibles2.Rows[i].Cells[2].Value = guiasDisponibles[i].apellido.ToString();
+                grillaGuiasDisponibles.Rows.Add();
+                grillaGuiasDisponibles.Rows[i].Cells[0].Value = guiasDisponibles[i].cuit.ToString();
+                grillaGuiasDisponibles.Rows[i].Cells[1].Value = guiasDisponibles[i].nombre.ToString();
+                grillaGuiasDisponibles.Rows[i].Cells[2].Value = guiasDisponibles[i].apellido.ToString();
             }
             lblCantGuiasNecesarios.Text = cantidadGuiasNecesarios.ToString();
+            btnAgregarGuias.Enabled = true;
         }
 
         private void seleccionarGuias(object sender, EventArgs e)
         {
-            //List<string> lista = new List<string>();
-            //foreach (DataGridViewRow fila in grillaGuiasDisponibles2.Rows)
-            //{
-            //    if (fila.Cells[3].Selected)
-            //    {
-            //        foreach (DataGridViewCell valor in fila.Cells)
-            //        {
-            //            lista.Add(valor.Value.ToString());
-            //        }
-            //    }
-            //}
-            gestorRegistrarVisita.tomarSeleccionGuias(guias, sender, e);
+            List<int> cuitGuias = new List<int>();
+            foreach (DataGridViewRow fila in grillaGuiasDisponibles.Rows)
+            {
+                string esChecked = (string)fila.Cells[3].Value;
+                if (esChecked == "Checked")
+                {
+                    cuitGuias.Add(Convert.ToInt32(fila.Cells[0].Value));
+                }
+            }
+            gestorRegistrarVisita.tomarSeleccionGuias(cuitGuias);
+            if (cuitGuias.Count == 0)
+                MessageBox.Show("Seleccionar algun guía", "Information", MessageBoxButtons.OK);
+        }
+
+        public void solicitarConfirmacion()
+        {
             btnConfirmar.Enabled = true;
         }
 
-        public void solicitarConfirmacion(object sender, EventArgs e)
+        private void confirmar(object sender, EventArgs e)
         {
-            DialogResult res = MessageBox.Show("¿Desea confirmar la Reserva?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question); 
+            DialogResult res = MessageBox.Show("¿Desea confirmar la Reserva?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (res == DialogResult.Yes)
             {
                 gestorRegistrarVisita.tomarConfirmacion();
@@ -233,97 +219,7 @@ namespace PPAI
                 MessageBox.Show("El registro de la reserva se ha cancelado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 this.Close();
             }
-
         }
-
-        private void confirmar(object sender, EventArgs e)
-        {
-            solicitarConfirmacion(sender, e);
-           
-        }
-
-
-        private void grillaExposiciones_CellClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-
-            int indice = e.RowIndex;
-            DataGridViewRow expo = grillaExposiciones.Rows[indice];
-            int seleccion = int.Parse(expo.Cells["idExpo"].Value.ToString());
-            if (exposicionesSeleccionadas.Count == 0)
-            {
-                exposicionesSeleccionadas.Add(seleccion);
-                btnListo.Enabled = true;
-            }
-            else
-            {//si quiere desmarcar una seleccion
-
-                for (int i = 0; i <= exposicionesSeleccionadas.Count -1; i++)
-                {
-                    if (seleccion == exposicionesSeleccionadas[i])
-                    {
-                        exposicionesSeleccionadas.Remove(seleccion);
-                        if(exposicionesSeleccionadas.Count == 0) 
-                        { 
-                            btnListo.Enabled = false; 
-                        }
-                       
-                        return;
-                    }
-                   
-                }
-                exposicionesSeleccionadas.Add(seleccion);
-                btnListo.Enabled = true;
-                return;
-            }
-            
-        }
-
-        
-
-        private void btn_buscarGuias_Click(object sender, EventArgs e)
-        {
-            
-            
-            gestorRegistrarVisita.buscarGuiasDisponibles();
-            
-        }
-
-        private void grillaGuiasDisponibles2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int indice = e.RowIndex;
-            DataGridViewRow guia = grillaGuiasDisponibles2.Rows[indice];
-            string seleccion = guia.Cells["cuit"].Value.ToString();
-            //siempre termina agregnaod algo ya que la lista esta vacia desde el principio 
-            if (guias.Count == 0)
-            {
-                guias.Add(seleccion);
-                btnSeleccionarGuias.Enabled = true;
-            }
-            else
-            {//cuando se desmarca un checkbox verifica si la seleccion( de la fila de la celda que se desmarco) es igual a la fila i
-
-                for (int i = 0; i <= guias.Count - 1; i++)
-                {
-                    if (seleccion == guias[i])
-                    {
-                        guias.Remove(seleccion);
-                        if (guias.Count == 0)
-                        {
-                            btnSeleccionarGuias.Enabled = false;
-                        }
-
-                        return;
-                    }
-
-                }
-                // en el caso de que la seleccion no haya sido debido a que se desmarco un checkbox, termina agregnaod el guia que se marco
-                guias.Add(seleccion);
-                btnSeleccionarGuias.Enabled = true;
-                return;
-            }
-        }
-
-        
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
@@ -332,37 +228,14 @@ namespace PPAI
             {
                 this.Close();
             }
-            
-        }
-
-        
-
-        private void cmbSede_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            exposicionesSeleccionadas.Clear();
-            
-            grillaExposiciones.Refresh();
-            grillaExposiciones.Rows.Clear();
-            List<Exposicion> expos = gestorRegistrarVisita.getListaExpos();
-            expos.Clear();
-        }
-
-        private void cmbTipoVisita_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            exposicionesSeleccionadas.Clear();
-            
         }
 
         public void limpiarForm()
         {
-            btnAceptar.Enabled = false;
+            btnFechaHoraReserva.Enabled = false;
             btnConfirmar.Enabled = false;
-            btnListo.Enabled = false;
-            btnSeleccionarGuias.Enabled = false;
-            btn_buscarGuias.Enabled = false;
-
-            exposicionesSeleccionadas.Clear();
-            guias.Clear();
+            btnAgregarExposiciones.Enabled = false;
+            btnAgregarGuias.Enabled = false;
 
             cmbEscuelas.SelectedIndex = -1;
             cmbSede.SelectedIndex = -1;
@@ -370,16 +243,12 @@ namespace PPAI
 
             grillaExposiciones.Refresh();
             grillaExposiciones.Rows.Clear();
-            grillaGuiasDisponibles2.Refresh();
-            grillaGuiasDisponibles2.Rows.Clear();
+            grillaGuiasDisponibles.Refresh();
+            grillaGuiasDisponibles.Rows.Clear();
 
             txtCantidadVisitantes.Text = "";
             txtHoraReserva.Text = "";                
             lblCantGuiasNecesarios.Text = "";
-
-            
         }
-
-       
     }
 }

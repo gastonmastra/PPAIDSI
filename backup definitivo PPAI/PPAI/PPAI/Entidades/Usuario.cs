@@ -27,8 +27,7 @@ namespace PPAI
         [Key]
         public int idUsuario { get; set; }
 
-        [StringLength(20)]
-        public string cuitEmpleado { get; set; }
+        public int cuitEmpleado { get; set; }
 
         public virtual Empleado Empleado { get; set; }
 

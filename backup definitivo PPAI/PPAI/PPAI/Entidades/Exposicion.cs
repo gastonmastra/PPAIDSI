@@ -90,7 +90,7 @@ namespace PPAI
             }
             return nombresPublicos;
         }
-        public Boolean esVigente()
+        public bool esVigente()
         {
             if (this.fechaFin is null)
             {
@@ -98,27 +98,22 @@ namespace PPAI
             }
             return false;
         }
-        /// <summary>
-        /// Suma las duraciones de todos los detalles de una exposicion
-        /// </summary>
-        /// <returns></returns>
-        //public TimeSpan calcularDuracionObrasExpuestas()
-        //{
-        //    TimeSpan duracionExpo = new TimeSpan();
-        //    foreach (DetalleExposicion detalle in DetalleExposicion)
-        //    {
-        //        duracionExpo += detalle.buscarDuracionExtObra();
-        //    };
-        //    return duracionExpo;
-        //}
-        public int calcularDuracionObrasExpuestas()
+        public double calcularDuracionObrasExpuestas()
         {
-            int duracionObras = 0;
+            double duracionObras = 0;
             foreach (var detalle in DetalleExposicion)
             {
                 duracionObras += detalle.buscarDuracionExtObra();
             }
             return duracionObras;
+        }
+        public int mostrarId()
+        {
+            return idSede;
+        }
+        public string mostrarNombre()
+        {
+            return nombre;
         }
     }
 }

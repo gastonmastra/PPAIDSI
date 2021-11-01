@@ -32,11 +32,6 @@ A:\3k\DSI\PPAIGit2\PPAIDSI\backup definitivo PPAI\PPAI\PPAI\obj\Debug\PPAI.cspro
 A:\3k\DSI\PPAIGit2\PPAIDSI\backup definitivo PPAI\PPAI\PPAI\obj\Debug\PPAI.Properties.Resources.resources
 A:\3k\DSI\PPAIGit2\PPAIDSI\backup definitivo PPAI\PPAI\PPAI\obj\Debug\PPAI.csproj.GenerateResource.cache
 A:\3k\DSI\PPAIGit2\PPAIDSI\backup definitivo PPAI\PPAI\PPAI\obj\Debug\PPAI.csproj.CoreCompileInputs.cache
-A:\3k\DSI\PPAIGit2\PPAIDSI\backup definitivo PPAI\PPAI\PPAI\obj\Debug\PPAI.exe
-A:\3k\DSI\PPAIGit2\PPAIDSI\backup definitivo PPAI\PPAI\PPAI\obj\Debug\PPAI.pdb
-A:\3k\DSI\PPAIGit2\PPAIDSI\backup definitivo PPAI\PPAI\PPAI\bin\Debug\PPAI.exe.config
-A:\3k\DSI\PPAIGit2\PPAIDSI\backup definitivo PPAI\PPAI\PPAI\bin\Debug\PPAI.exe
-A:\3k\DSI\PPAIGit2\PPAIDSI\backup definitivo PPAI\PPAI\PPAI\bin\Debug\PPAI.pdb
 A:\3k\DSI\PPAIGit2\PPAIDSI\backup definitivo PPAI\PPAI\PPAI\bin\Debug\EntityFramework.dll
 A:\3k\DSI\PPAIGit2\PPAIDSI\backup definitivo PPAI\PPAI\PPAI\bin\Debug\EntityFramework.SqlServer.dll
 A:\3k\DSI\PPAIGit2\PPAIDSI\backup definitivo PPAI\PPAI\PPAI\bin\Debug\EntityFramework.xml
@@ -88,3 +83,8 @@ C:\Users\ticia\OneDrive\Escritorio\PPAIDSI-master\PPAIDSI-master\backup definiti
 C:\Users\ticia\OneDrive\Escritorio\PPAIDSI-master\PPAIDSI-master\backup definitivo PPAI\PPAI\PPAI\obj\Debug\PPAI.csproj.CopyComplete
 C:\Users\ticia\OneDrive\Escritorio\PPAIDSI-master\PPAIDSI-master\backup definitivo PPAI\PPAI\PPAI\obj\Debug\ur.exe
 C:\Users\ticia\OneDrive\Escritorio\PPAIDSI-master\PPAIDSI-master\backup definitivo PPAI\PPAI\PPAI\obj\Debug\ur.pdb
+A:\3k\DSI\PPAIGit2\PPAIDSI\backup definitivo PPAI\PPAI\PPAI\bin\Debug\ur.exe.config
+A:\3k\DSI\PPAIGit2\PPAIDSI\backup definitivo PPAI\PPAI\PPAI\bin\Debug\ur.exe
+A:\3k\DSI\PPAIGit2\PPAIDSI\backup definitivo PPAI\PPAI\PPAI\bin\Debug\ur.pdb
+A:\3k\DSI\PPAIGit2\PPAIDSI\backup definitivo PPAI\PPAI\PPAI\obj\Debug\ur.exe
+A:\3k\DSI\PPAIGit2\PPAIDSI\backup definitivo PPAI\PPAI\PPAI\obj\Debug\ur.pdb

@@ -8,6 +8,6 @@ namespace PPAI.Patron
 {
     public interface IEstrategiaCalculoDuracion
     {
-        int calcularDuracionEstimadaVisita(List<Exposicion> exposiciones);
+        double calcularDuracionEstimadaVisita(List<Exposicion> exposiciones);
     }
 }

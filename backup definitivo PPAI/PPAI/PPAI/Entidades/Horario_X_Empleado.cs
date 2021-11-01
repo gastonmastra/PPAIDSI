@@ -10,8 +10,7 @@ namespace PPAI.Entidades
     {
         [Key]
         [Column(Order = 0)]
-        [StringLength(20)]
-        public string cuit { get; set; }
+        public int cuit { get; set; }
 
         [Key]
         [Column(Order = 1)]

@@ -67,8 +67,6 @@
     <Compile Include="Entidades\Exposicion.cs" />
     <Compile Include="Entidades\ExposicionesXSede.cs" />
     <Compile Include="Entidades\Horario_X_Empleado.cs" />
-    <Compile Include="Entidades\Model1.cs" />
-    <Compile Include="Entidades\Model2.cs" />
     <Compile Include="Entidades\PublicosXExposicion.cs" />
     <Compile Include="Interfaces\PantallaRegistrarVisita.cs">
       <SubType>Form</SubType>
@@ -97,6 +95,7 @@
     <Compile Include="Entidades\Valuaciones.cs" />
     <EmbeddedResource Include="Interfaces\PantallaRegistrarVisita.resx">
       <DependentUpon>PantallaRegistrarVisita.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
