@@ -47,14 +47,6 @@ namespace PPAI.Clases
         //la reserva, para cuando eligieras otro guia la lista de guias seleccionados iba a tener los que seleccionaste antes, asique
         // con estos metodos podemos limpiar la lista, equivale tambien para la de las exposiciones seleccionadas
         
-        public List<Empleado> getGuias()
-        {
-            return guiasSeleccionados;
-        }
-        public List<Exposicion> getListaExpos()
-        {
-            return exposicionesSeleccionadas;
-        }
         public List<Escuela> buscarEscuelas()
         {
             {
@@ -276,7 +268,7 @@ namespace PPAI.Clases
             {
                 numero = reserva.getNroReserva();
             }
-            return numero + 1;
+            return numero;
         }
         //Cambiar a void en el modelo
         public void getDate()
@@ -292,7 +284,7 @@ namespace PPAI.Clases
         }
         public void registrarReserva()
         {
-            int nroReserva = generarNroReservaUnico();
+            ultNroReserva = generarNroReservaUnico();
             if (guiasSeleccionados.Count < cantidadGuiasNecesarios)
             {
                 MessageBox.Show("La cantidad de guias seleccionados no es suficiente");

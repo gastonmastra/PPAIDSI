@@ -17,6 +17,5 @@ namespace PPAI.Patron
             }
             return duracion;
         }
-
     }
 }
