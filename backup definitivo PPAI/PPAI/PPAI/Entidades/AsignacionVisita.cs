@@ -11,7 +11,8 @@ namespace PPAI
     {
         public DateTime fechaHoraFin { get; set; }
 
-        [Required]
+        [Key]
+        [Column(Order = 3)]
         public int guiaAsignado { get; set; }
 
         [Key]

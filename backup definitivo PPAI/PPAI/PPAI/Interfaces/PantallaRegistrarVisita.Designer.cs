@@ -37,6 +37,10 @@
             this.dateFechaReserva = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.grillaGuiasDisponibles = new System.Windows.Forms.DataGridView();
+            this.cuit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombreGuia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.apellidoGuia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.grillaExposiciones = new System.Windows.Forms.DataGridView();
             this.idExpo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,10 +64,6 @@
             this.btnFechaHoraReserva = new System.Windows.Forms.Button();
             this.btnAgregarGuias = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.cuit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombreGuia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.apellidoGuia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grillaGuiasDisponibles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grillaExposiciones)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -155,12 +155,43 @@
             this.nombreGuia,
             this.apellidoGuia,
             this.seleccionar});
-            this.grillaGuiasDisponibles.Location = new System.Drawing.Point(46, 431);
+            this.grillaGuiasDisponibles.Location = new System.Drawing.Point(13, 431);
             this.grillaGuiasDisponibles.Name = "grillaGuiasDisponibles";
             this.grillaGuiasDisponibles.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.grillaGuiasDisponibles.RowHeadersWidth = 51;
-            this.grillaGuiasDisponibles.Size = new System.Drawing.Size(381, 97);
+            this.grillaGuiasDisponibles.Size = new System.Drawing.Size(471, 97);
             this.grillaGuiasDisponibles.TabIndex = 36;
+            // 
+            // cuit
+            // 
+            this.cuit.HeaderText = "Cuit";
+            this.cuit.MinimumWidth = 6;
+            this.cuit.Name = "cuit";
+            // 
+            // nombreGuia
+            // 
+            this.nombreGuia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.nombreGuia.HeaderText = "Nombre";
+            this.nombreGuia.MinimumWidth = 6;
+            this.nombreGuia.Name = "nombreGuia";
+            this.nombreGuia.Width = 125;
+            // 
+            // apellidoGuia
+            // 
+            this.apellidoGuia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.apellidoGuia.HeaderText = "Apellido";
+            this.apellidoGuia.MinimumWidth = 6;
+            this.apellidoGuia.Name = "apellidoGuia";
+            this.apellidoGuia.Width = 125;
+            // 
+            // seleccionar
+            // 
+            this.seleccionar.FalseValue = "False";
+            this.seleccionar.FillWeight = 151.2195F;
+            this.seleccionar.HeaderText = "";
+            this.seleccionar.MinimumWidth = 6;
+            this.seleccionar.Name = "seleccionar";
+            this.seleccionar.TrueValue = "Checked";
             // 
             // grillaExposiciones
             // 
@@ -177,10 +208,10 @@
             this.horaCierre,
             this.publicoDestino,
             this.seleccion});
-            this.grillaExposiciones.Location = new System.Drawing.Point(46, 218);
+            this.grillaExposiciones.Location = new System.Drawing.Point(13, 218);
             this.grillaExposiciones.Name = "grillaExposiciones";
             this.grillaExposiciones.RowHeadersWidth = 51;
-            this.grillaExposiciones.Size = new System.Drawing.Size(381, 101);
+            this.grillaExposiciones.Size = new System.Drawing.Size(471, 101);
             this.grillaExposiciones.TabIndex = 35;
             // 
             // idExpo
@@ -408,37 +439,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(398, 60);
             this.pictureBox1.TabIndex = 29;
             this.pictureBox1.TabStop = false;
-            // 
-            // cuit
-            // 
-            this.cuit.HeaderText = "Cuit";
-            this.cuit.MinimumWidth = 6;
-            this.cuit.Name = "cuit";
-            // 
-            // nombreGuia
-            // 
-            this.nombreGuia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.nombreGuia.HeaderText = "Nombre";
-            this.nombreGuia.MinimumWidth = 6;
-            this.nombreGuia.Name = "nombreGuia";
-            this.nombreGuia.Width = 125;
-            // 
-            // apellidoGuia
-            // 
-            this.apellidoGuia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.apellidoGuia.HeaderText = "Apellido";
-            this.apellidoGuia.MinimumWidth = 6;
-            this.apellidoGuia.Name = "apellidoGuia";
-            this.apellidoGuia.Width = 125;
-            // 
-            // seleccionar
-            // 
-            this.seleccionar.FalseValue = "False";
-            this.seleccionar.FillWeight = 151.2195F;
-            this.seleccionar.HeaderText = "";
-            this.seleccionar.MinimumWidth = 6;
-            this.seleccionar.Name = "seleccionar";
-            this.seleccionar.TrueValue = "Checked";
             // 
             // PantallaRegistrarVisita
             // 

@@ -41,11 +41,6 @@ namespace PPAI.Clases
         {
             return sesionActual.buscarEmpleadoEnSesion();
         }
-        //los metodos de getGuias y getListaExpos los puse porque cuando por ejemplo 
-        // si se habia elegido una hora para la reserva y luego ponias en el boton
-        // para buscar guias y seleccionabas uno, si por alguna razon se te daba por cambiar la hora de 
-        //la reserva, para cuando eligieras otro guia la lista de guias seleccionados iba a tener los que seleccionaste antes, asique
-        // con estos metodos podemos limpiar la lista, equivale tambien para la de las exposiciones seleccionadas
         
         public List<Escuela> buscarEscuelas()
         {
@@ -127,7 +122,8 @@ namespace PPAI.Clases
 
         public void tomarSeleccionExposicion(List<int> lista)
         {
-            exposicionesSeleccionadas.Clear();
+            exposicionesSeleccionadas = new List<Exposicion>();
+            guiasSeleccionados = null;
             foreach (int idExpo in lista)
             {
                 Exposicion exposicion = db.Exposicion.Find(idExpo, sedeSeleccionada.idSede);
@@ -135,12 +131,6 @@ namespace PPAI.Clases
             }
             pantallaRegistrarVisita.solicitarFechaHoraReserva();
         }
-
-        /// <summary>
-        /// Aplicar patron strategy
-        /// </summary>
-        /// <param name="fecha"></param>
-        /// <param name="hora"></param>
         public void tomarFechaHoraReserva(DateTime fecha, int hora, string nombreTipoVisita)
         { 
             var fechaYHora = fecha.AddHours(hora);
@@ -178,7 +168,6 @@ namespace PPAI.Clases
         {
             foreach (ReservaVisita reserva in db.ReservaVisita)
             {
-                //AVERIGUAR QUE HACER ACA
                 if (fechaYHoraReserva == reserva.getFechaYHoraReserva())
                 {
                     MessageBox.Show("Ya existe una reserva para el día y la hora seleccionada, por favor, seleccione otro horario");
@@ -209,7 +198,7 @@ namespace PPAI.Clases
         {
             IEstrategiaCalculoDuracion est;
 
-            if (tipoVisitaSeleccionada == "Completa                 ")
+            if (tipoVisitaSeleccionada.TrimEnd() == "Completa")
             {
                 est = new VisitaCompleta();
             }
@@ -236,6 +225,8 @@ namespace PPAI.Clases
         }
         public ReservaVisita crearReservaVisita(DateTime fechaHoraCreacion, Estado estado)
         {
+            if (fechaYHoraReserva <= DateTime.Now)
+                throw new ApplicationException("No se puede reservar para fechas menores o iguales a la actual");
             var fechaHoraFin = fechaYHoraReserva.AddHours((double)duracionEstimada / 60);
             var fechaHoraInicio = fechaYHoraReserva;
             ReservaVisita nueva = new ReservaVisita(guiasSeleccionados, fechaHoraFin, fechaHoraInicio, estado)
@@ -270,7 +261,6 @@ namespace PPAI.Clases
             }
             return numero;
         }
-        //Cambiar a void en el modelo
         public void getDate()
         {
             fechaActual = DateTime.Now;
@@ -295,8 +285,20 @@ namespace PPAI.Clases
                 empleadoSesion = buscarEmpleadoEnSesion(sesion);
                 getDate();
                 Estado estadoPendiente = buscarEstadoPendienteDeConfirmacion();
-                crearReservaVisita(fechaActual, estadoPendiente);
-                finCU();
+                try
+                {
+                    crearReservaVisita(fechaActual, estadoPendiente);
+                    finCU();
+                }
+                catch(ApplicationException aex)
+                {
+                    MessageBox.Show(aex.Message, "Error", MessageBoxButtons.OK);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Error inesperado: " + e.Message, "Error", MessageBoxButtons.OK);
+                }
+
             }
         }
         public void tomarCantidadVisitantesIngresada(int cant)

@@ -13,10 +13,7 @@ namespace PPAI
         public ReservaVisita(List<Empleado> guiasSeleccionados, DateTime fechaHoraFin, DateTime fechaHoraInicio, Estado estado)
         {
             this.AsignacionVisita = new HashSet<AsignacionVisita>();
-            foreach (var empleado in guiasSeleccionados)
-            {
-                crearAsignacionVisita(guiasSeleccionados, fechaHoraFin, fechaHoraInicio, estado);
-            }
+            crearAsignacionVisita(guiasSeleccionados, fechaHoraFin, fechaHoraInicio, estado);
             crearCambioEstado(estado);
         }
 
